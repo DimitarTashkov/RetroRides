@@ -58,6 +58,7 @@
             // formPanel
             // 
             formPanel.BackColor = SystemColors.Control;
+            formPanel.BackgroundImage = Properties.Resources.gradient_img__4_;
             resources.ApplyResources(formPanel, "formPanel");
             formPanel.Controls.Add(pfpErrorMessages);
             formPanel.Controls.Add(ageErrors);
@@ -208,6 +209,7 @@
             // logo
             // 
             logo.BackColor = Color.Transparent;
+            logo.BackgroundImage = Properties.Resources.RetroRides_logo;
             resources.ApplyResources(logo, "logo");
             logo.Name = "logo";
             logo.TabStop = false;
@@ -222,6 +224,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.background;
             Controls.Add(formPanel);
             Name = "Register";
             Load += Register_Load;

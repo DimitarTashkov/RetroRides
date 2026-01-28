@@ -127,5 +127,9 @@ namespace RetroRides.Forms
 
         }
 
+        private void formPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

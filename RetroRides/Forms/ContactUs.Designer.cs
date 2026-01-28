@@ -119,6 +119,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackgroundImage = Properties.Resources.RetroRides_logo;
             resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
@@ -127,6 +128,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.background;
             Controls.Add(pictureBox1);
             Controls.Add(roundPictureBox1);
             Controls.Add(menu);

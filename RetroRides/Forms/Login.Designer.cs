@@ -53,6 +53,7 @@
             // formPanel
             // 
             formPanel.BackColor = Color.White;
+            formPanel.BackgroundImage = Properties.Resources.gradient_img__4_;
             resources.ApplyResources(formPanel, "formPanel");
             formPanel.Controls.Add(label8);
             formPanel.Controls.Add(label7);
@@ -70,6 +71,7 @@
             formPanel.Controls.Add(usernameLabel);
             formPanel.Controls.Add(logo);
             formPanel.Name = "formPanel";
+            formPanel.Paint += formPanel_Paint;
             // 
             // label8
             // 
@@ -182,6 +184,7 @@
             // logo
             // 
             logo.BackColor = Color.Transparent;
+            logo.BackgroundImage = Properties.Resources.RetroRides_logo;
             resources.ApplyResources(logo, "logo");
             logo.Name = "logo";
             logo.TabStop = false;
@@ -198,8 +201,10 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.background;
             Controls.Add(formPanel);
             Controls.Add(label3);
+            DoubleBuffered = true;
             Name = "Login";
             Load += Login_Load;
             formPanel.ResumeLayout(false);

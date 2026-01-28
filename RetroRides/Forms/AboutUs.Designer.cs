@@ -135,6 +135,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.background;
             Controls.Add(lblStats);
             Controls.Add(lblDescription);
             Controls.Add(roundPictureBox1);

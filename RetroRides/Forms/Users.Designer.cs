@@ -189,6 +189,7 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.background;
             Controls.Add(roundPictureBox1);
             Controls.Add(menu);
             Controls.Add(usersContainer);
