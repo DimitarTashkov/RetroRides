@@ -12,18 +12,12 @@ namespace RetroRides.Forms
     public partial class Users : Form
     {
         private readonly IUserService userService;
-        private readonly ISessionService sessionService;
-        private readonly IPhotoServiceManager serviceManager;
-        private readonly IShopService shopService;
         private User activeUser;
 
         public Users(IUserService userService)
         {
             InitializeComponent();
             this.userService = userService;
-            this.sessionService = ServiceLocator.GetService<ISessionService>();
-            this.serviceManager = ServiceLocator.GetService<IPhotoServiceManager>();
-            this.shopService = ServiceLocator.GetService<IShopService>();
             activeUser = userService.GetLoggedInUserAsync();
 
 

@@ -12,6 +12,12 @@ namespace RetroRides.Models
 {
     public class User
     {
+        public User()
+        {
+            this.Orders = new HashSet<Order>();
+            this.Reservations = new HashSet<Reservation>();
+            this.UserRoles = new HashSet<UserRole>();
+        }
         [Key]
         public Guid Id { get; set; } 
 
@@ -33,8 +39,9 @@ namespace RetroRides.Models
         public HashSet<UserRole> UsersRoles { get; set; }
         = new HashSet<UserRole>();
 
-        public virtual ICollection<PhotoSession> PhotoSessions { get; set; } = new HashSet<PhotoSession>();
-        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
 
     }

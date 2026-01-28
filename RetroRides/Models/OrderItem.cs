@@ -8,14 +8,14 @@ namespace RetroRides.Data.Models
     public class OrderItem
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [ForeignKey(nameof(Order))]
-        public int OrderId { get; set; }
+        public Guid OrderId { get; set; }
         public virtual Order Order { get; set; }
 
         [ForeignKey(nameof(Souvenir))]
-        public int SouvenirId { get; set; }
+        public Guid SouvenirId { get; set; }
         public virtual Souvenir Souvenir { get; set; }
 
         public int Quantity { get; set; }

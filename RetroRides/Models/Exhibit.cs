@@ -10,7 +10,7 @@ namespace RetroRides.Models
     public class Exhibit
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(50)]

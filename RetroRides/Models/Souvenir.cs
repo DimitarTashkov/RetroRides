@@ -10,7 +10,7 @@ namespace RetroRides.Models
     public class Souvenir
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(100)]

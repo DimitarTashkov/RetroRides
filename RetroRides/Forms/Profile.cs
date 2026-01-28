@@ -19,9 +19,6 @@ namespace RetroRides.Forms
         private User activeUser;
         private Guid userId;
         private readonly IUserService userService;
-        private readonly IShopService shopService = ServiceLocator.GetService<IShopService>();
-        private readonly ISessionService sessionService = ServiceLocator.GetService<ISessionService>();
-        private readonly IPhotoServiceManager serviceManager = ServiceLocator.GetService<IPhotoServiceManager>();
 
 
         public Profile(IUserService userService, Guid userId)

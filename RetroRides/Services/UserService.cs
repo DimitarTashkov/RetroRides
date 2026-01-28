@@ -15,11 +15,11 @@ namespace RetroRides.Services
 {
     public class UserService : BaseService ,IUserService
     {
-        private readonly PrismContext dbContext;
+        private readonly MuseumContext dbContext;
 
         private User? loggedInUser;
 
-        public UserService(PrismContext dbContext)
+        public UserService(MuseumContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -91,7 +91,7 @@ namespace RetroRides.Services
         }
         public async Task<bool> IsUserAdminAsync(Guid userId)
         {
-            return await dbContext.UsersRoles
+            return await dbContext.UserRoles
                 .AnyAsync(ur => ur.UserId == userId && ur.Role.Name == "Admin");
         }
         public void LogoutUser()
@@ -128,7 +128,7 @@ namespace RetroRides.Services
                 return false;
             }
 
-            if(dbContext.UsersRoles.Any(ur => ur.UserId == userId && ur.RoleId == adminRole.Id))
+            if(dbContext.UserRoles.Any(ur => ur.UserId == userId && ur.RoleId == adminRole.Id))
             {
                 return false;
             }
@@ -139,7 +139,7 @@ namespace RetroRides.Services
                 RoleId = adminRole.Id
             };
 
-            dbContext.UsersRoles.Add(userRole);
+            dbContext.UserRoles.Add(userRole);
             await dbContext.SaveChangesAsync();
             return true;
         }
@@ -151,7 +151,7 @@ namespace RetroRides.Services
                 return false;
             }
 
-            var userRole = await dbContext.UsersRoles
+            var userRole = await dbContext.UserRoles
                 .FirstOrDefaultAsync(ur => ur.UserId == userId && ur.RoleId == adminRole.Id);
 
             if (userRole == null)
@@ -159,7 +159,7 @@ namespace RetroRides.Services
                 return false;
             }
 
-            dbContext.UsersRoles.Remove(userRole);
+            dbContext.UserRoles.Remove(userRole);
             await dbContext.SaveChangesAsync();
             return true;
         }

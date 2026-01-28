@@ -17,14 +17,10 @@ namespace RetroRides.Extensions
     {
         public static IServiceCollection AddHotelServices(this IServiceCollection services)
         {
-            services.AddDbContext<PrismContext>(options =>
+            services.AddDbContext<MuseumContext>(options =>
                 options.UseSqlServer(Configuration.ConnectionString));
 
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IShopService, ShopService>();
-            services.AddScoped<IPhotoServiceManager, PhotoServiceManager>();
-            services.AddScoped<ISessionService, SessionService>();
-
 
 
             return services;

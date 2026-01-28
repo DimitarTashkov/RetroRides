@@ -12,7 +12,7 @@ namespace RetroRides.Models.DbConfiguration
     {
         public static async Task SeedAdminUserAsync()
         {
-            using (var context = new PrismContext())
+            using (var context = new MuseumContext())
             {
                 var adminRole = await context.Roles.FirstOrDefaultAsync(r => r.Name == "Admin");
 
@@ -45,7 +45,7 @@ namespace RetroRides.Models.DbConfiguration
                             RoleId = adminRole.Id
                         };
 
-                        context.UsersRoles.Add(adminUserRole);
+                        context.UserRoles.Add(adminUserRole);
                         await context.SaveChangesAsync();
                     
                 }

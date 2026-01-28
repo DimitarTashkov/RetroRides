@@ -11,18 +11,12 @@ namespace RetroRides.Forms
     public partial class Index : Form
     {
         private readonly IUserService userService;
-        private readonly IShopService shopService;
-        private readonly ISessionService sessionService;
-        private readonly IPhotoServiceManager serviceManager;
 
         private User activeUser;
 
         public Index(IUserService userService)
         {
             this.userService = userService;
-            this.shopService = ServiceLocator.GetService<IShopService>();
-            this.sessionService = ServiceLocator.GetService<ISessionService>();
-            this.serviceManager = ServiceLocator.GetService<IPhotoServiceManager>();
             activeUser = userService.GetLoggedInUserAsync();
 
 
