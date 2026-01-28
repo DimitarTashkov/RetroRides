@@ -1,4 +1,5 @@
 ﻿using RetroRides.Data.Models;
+using RetroRides.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,19 +8,17 @@ namespace RetroRides.Data.Models
     public class OrderItem
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
-        public Guid OrderId { get; set; }
-        [ForeignKey(nameof(OrderId))]
+        [ForeignKey(nameof(Order))]
+        public int OrderId { get; set; }
         public virtual Order Order { get; set; }
 
-        public Guid ProductId { get; set; }
-        [ForeignKey(nameof(ProductId))]
-        public virtual Product Product { get; set; }
+        [ForeignKey(nameof(Souvenir))]
+        public int SouvenirId { get; set; }
+        public virtual Souvenir Souvenir { get; set; }
 
-        public int Quantity { get; set; } // Колко бройки от този продукт
-
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal UnitPrice { get; set; } // Цена към момента на поръчката
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
     }
 }
