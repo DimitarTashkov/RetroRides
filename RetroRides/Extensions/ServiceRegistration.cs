@@ -21,6 +21,10 @@ namespace RetroRides.Extensions
                 options.UseSqlServer(Configuration.ConnectionString));
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IExhibitService, ExhibitService>();
+            services.AddScoped<IReservationService, ReservationService>();
+            services.AddScoped<ISouvenirService, SouvenirService>();
+
 
 
             return services;
