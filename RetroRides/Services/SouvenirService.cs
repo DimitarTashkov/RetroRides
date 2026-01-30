@@ -21,7 +21,7 @@ namespace RetroRides.Services
 
         public List<Souvenir> GetAllSouvenirs()
         {
-            return _context.Souvenirs.Where(s => s.StockQuantity > 0).ToList();
+            return _context.Souvenirs.ToList();
         }
 
         public Souvenir GetSouvenirById(Guid id)
@@ -64,6 +64,35 @@ namespace RetroRides.Services
             else
             {
                 throw new Exception("Not enough stock available.");
+            }
+        }
+        public void AddSouvenir(Souvenir souvenir)
+        {
+            if (souvenir.Id == Guid.Empty) souvenir.Id = Guid.NewGuid();
+            _context.Souvenirs.Add(souvenir);
+            _context.SaveChanges();
+        }
+
+        public void UpdateSouvenir(Souvenir souvenir)
+        {
+            var existing = _context.Souvenirs.Find(souvenir.Id);
+            if (existing != null)
+            {
+                existing.Name = souvenir.Name;
+                existing.Price = souvenir.Price;
+                existing.StockQuantity = souvenir.StockQuantity;
+                existing.ImagePath = souvenir.ImagePath;
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteSouvenir(Guid id)
+        {
+            var item = _context.Souvenirs.Find(id);
+            if (item != null)
+            {
+                _context.Souvenirs.Remove(item);
+                _context.SaveChanges();
             }
         }
     }
