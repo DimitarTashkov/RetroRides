@@ -17,7 +17,7 @@ namespace RetroRides.Forms
         private readonly IExhibitService _service;
         private Exhibit _exhibit; // Текущият обект (ако е null = нов)
         private string _selectedImagePath = null; // Пазим пътя до новата снимка
-        public AddEditExhibit(IExhibitService exhibitService, Exhibit exhibit)
+        public AddEditExhibit(IExhibitService exhibitService, Exhibit? exhibit)
         {
             InitializeComponent();
             _service = exhibitService;

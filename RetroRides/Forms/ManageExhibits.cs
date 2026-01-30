@@ -66,12 +66,15 @@ namespace RetroRides.Forms
                     _service.DeleteExhibit(exhibit.Id);
                     LoadData();
                 }
+            }else if (dgvExhibits.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                Program.SwitchMainForm(new AddEditExhibit(_service, exhibit));
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Add form logic.");
+        {   
+            Program.SwitchMainForm(new AddEditExhibit(_service, null));
         }
     }
 }
