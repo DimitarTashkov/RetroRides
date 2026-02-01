@@ -1,6 +1,6 @@
 ﻿namespace RetroRides.Forms
 {
-    partial class ManageExhibits
+    partial class ManageSouvenirs
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageExhibits));
-            dgvExhibits = new DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageSouvenirs));
             btnAdd = new Button();
+            dgvSouvenirs = new DataGridView();
             btnBack = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvExhibits).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSouvenirs).BeginInit();
             SuspendLayout();
-            // 
-            // dgvExhibits
-            // 
-            dgvExhibits.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvExhibits.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvExhibits.BackgroundColor = Color.White;
-            dgvExhibits.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvExhibits.Location = new Point(12, 111);
-            dgvExhibits.Name = "dgvExhibits";
-            dgvExhibits.RowHeadersWidth = 51;
-            dgvExhibits.Size = new Size(958, 430);
-            dgvExhibits.TabIndex = 0;
             // 
             // btnAdd
             // 
@@ -53,10 +41,22 @@
             btnAdd.Location = new Point(768, 53);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(202, 52);
-            btnAdd.TabIndex = 1;
+            btnAdd.TabIndex = 3;
             btnAdd.Text = "Add new vehicle";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
+            // 
+            // dgvSouvenirs
+            // 
+            dgvSouvenirs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvSouvenirs.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSouvenirs.BackgroundColor = Color.White;
+            dgvSouvenirs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSouvenirs.Location = new Point(12, 111);
+            dgvSouvenirs.Name = "dgvSouvenirs";
+            dgvSouvenirs.RowHeadersWidth = 51;
+            dgvSouvenirs.Size = new Size(958, 430);
+            dgvSouvenirs.TabIndex = 2;
             // 
             // btnBack
             // 
@@ -71,7 +71,7 @@
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
-            // ManageExhibits
+            // ManageSouvenirs
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -80,20 +80,20 @@
             ClientSize = new Size(982, 553);
             Controls.Add(btnBack);
             Controls.Add(btnAdd);
-            Controls.Add(dgvExhibits);
+            Controls.Add(dgvSouvenirs);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "ManageExhibits";
-            Text = "ManageExhibits";
-            Load += ManageExhibits_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvExhibits).EndInit();
+            Name = "ManageSouvenirs";
+            Text = "ManageSouvenirs";
+            Load += ManageSouvenirs_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvSouvenirs).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dgvExhibits;
         private Button btnAdd;
+        private DataGridView dgvSouvenirs;
         private Button btnBack;
     }
 }

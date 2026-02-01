@@ -1,4 +1,5 @@
-﻿using RetroRides.Models;
+﻿using RetroRides.Extensions;
+using RetroRides.Models;
 using RetroRides.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace RetroRides.Forms
     public partial class ManageExhibits : Form
     {
         private readonly IExhibitService _service;
+        private readonly IUserService _userService;
         public ManageExhibits(IExhibitService service)
         {
             InitializeComponent();
             this._service = service;
+            this._userService = ServiceLocator.GetService<IUserService>();
         }
 
         private void ManageExhibits_Load(object sender, EventArgs e)
@@ -66,15 +69,21 @@ namespace RetroRides.Forms
                     _service.DeleteExhibit(exhibit.Id);
                     LoadData();
                 }
-            }else if (dgvExhibits.Columns[e.ColumnIndex].Name == "Edit")
+            }
+            else if (dgvExhibits.Columns[e.ColumnIndex].Name == "Edit")
             {
                 Program.SwitchMainForm(new AddEditExhibit(_service, exhibit));
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {   
+        {
             Program.SwitchMainForm(new AddEditExhibit(_service, null));
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Program.SwitchMainForm(new Index(_userService));
         }
     }
 }
