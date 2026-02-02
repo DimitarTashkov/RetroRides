@@ -1,4 +1,5 @@
 ﻿using RetroRides.Extensions;
+using RetroRides.Models;
 using RetroRides.Services.Interfaces;
 using RetroRides.Utilities;
 using System;
@@ -17,10 +18,12 @@ namespace RetroRides.Forms
     {
         private readonly IExhibitService _service;
         private readonly IUserService _userService;
+        private readonly IReservationService _reservationService;
         public Catalog()
         {
             InitializeComponent();
             _userService = ServiceLocator.GetService<IUserService>();
+            _reservationService = ServiceLocator.GetService<IReservationService>();
         }
         private void CatalogForm_Load(object sender, EventArgs e)
         {
@@ -96,7 +99,7 @@ namespace RetroRides.Forms
                     BackColor = Color.Black,
                     ForeColor = Color.White,
                     Cursor = Cursors.Hand,
-                    Tag = item.Id // Пазим ID-то тук!
+                    Tag = item // Пазим ID-то тук!
                 };
                 btnBook.Click += BtnBook_Click;
                 card.Controls.Add(btnBook);
@@ -109,12 +112,9 @@ namespace RetroRides.Forms
         private void BtnBook_Click(object sender, EventArgs e)
         {
             var btn = (Button)sender;
-            Guid carId = (Guid)btn.Tag;
+            var car = (Exhibit)btn.Tag;
 
-            // Тук ще пренасочваме към формата за резервация по-нататък
-            MessageBox.Show($"Redirecting to booking for car ID: {carId}");
-
-            // Program.SwitchMainForm(new BookVisitForm(carId));
+             Program.SwitchMainForm(new BookVisit(_reservationService,car));
         }
 
         // Вържи този метод към бутона Back от дизайнера

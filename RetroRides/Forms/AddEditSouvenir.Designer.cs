@@ -93,20 +93,20 @@
             // btnBack
             // 
             btnBack.BackColor = Color.Orange;
-            btnBack.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnBack.ForeColor = SystemColors.ControlText;
             btnBack.Location = new Point(485, 502);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(100, 40);
             btnBack.TabIndex = 56;
-            btnBack.Text = "Back";
+            btnBack.Text = "<-Back";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
             // btnSave
             // 
             btnSave.BackColor = Color.Lime;
-            btnSave.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnSave.Location = new Point(354, 502);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(100, 40);

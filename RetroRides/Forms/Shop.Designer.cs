@@ -43,7 +43,7 @@
             // btnBack
             // 
             btnBack.BackColor = Color.DarkOrange;
-            btnBack.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = SystemColors.ControlText;
             btnBack.Location = new Point(12, 48);
             btnBack.Name = "btnBack";
