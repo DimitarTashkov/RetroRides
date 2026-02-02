@@ -1,4 +1,5 @@
-﻿using RetroRides.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RetroRides.Data;
 using RetroRides.Data.Models;
 using RetroRides.Models;
 using RetroRides.Services.Interfaces;
@@ -38,7 +39,7 @@ namespace RetroRides.Services
                 // 1. Намаляваме наличността
                 souvenir.StockQuantity -= quantity;
 
-                // 2. Създаваме поръчка (опростено: 1 поръчка = 1 вид продукт за момента)
+                // 2. Създаваме Поръчка (Order)
                 var order = new Order
                 {
                     Id = Guid.NewGuid(),
@@ -47,6 +48,7 @@ namespace RetroRides.Services
                     TotalAmount = souvenir.Price * quantity
                 };
 
+                // 3. Добавяме редовете (Items)
                 var orderItem = new OrderItem
                 {
                     Id = Guid.NewGuid(),
@@ -63,7 +65,7 @@ namespace RetroRides.Services
             }
             else
             {
-                throw new Exception("Not enough stock available.");
+                throw new Exception("Not enough stock available!");
             }
         }
         public void AddSouvenir(Souvenir souvenir)
@@ -94,6 +96,26 @@ namespace RetroRides.Services
                 _context.Souvenirs.Remove(item);
                 _context.SaveChanges();
             }
+        }
+        public List<Order> GetOrdersByUserId(Guid userId)
+        {
+            // Взимаме поръчките на потребителя + детайлите какво е купил
+            return _context.Orders
+                           .Include(o => o.OrderItems)
+                           .ThenInclude(oi => oi.Souvenir)
+                           .Where(o => o.UserId == userId)
+                           .OrderByDescending(o => o.OrderDate)
+                           .ToList();
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return _context.Orders
+                           .Include(o => o.User) // За да видим кой е купил
+                           .Include(o => o.OrderItems)
+                           .ThenInclude(oi => oi.Souvenir)
+                           .OrderByDescending(o => o.OrderDate)
+                           .ToList();
         }
     }
 }
