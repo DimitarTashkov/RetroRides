@@ -35,6 +35,10 @@ namespace RetroRides.Forms
         {
             SetupUI();
             pictureBox1.ImageLocation = _selectedExhibit.ImagePath;
+            
+            bool isAdmin = AuthorizationHelper.IsAuthorized();
+            Users.Visible = isAdmin;
+            Management.Visible = isAdmin;
         }
         private void SetupUI()
         {
@@ -90,6 +94,54 @@ namespace RetroRides.Forms
         private void btnBack_Click(object sender, EventArgs e)
         {
             Program.SwitchMainForm(new Catalog());
+        }
+
+        private void menu_ItemClicked(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item == null) return;
+
+            string formName = item.Name;
+            var userService = ServiceLocator.GetService<IUserService>();
+            Form form = new Index(userService);
+
+            switch (formName)
+            {
+                case "Store":
+                    form = new Shop(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "Vehicles":
+                    form = new Catalog();
+                    break;
+                case "MyReservations":
+                    form = new Orders(ServiceLocator.GetService<IReservationService>(), ServiceLocator.GetService<ISouvenirService>(), userService);
+                    break;
+                case "Users":
+                    form = new Users(userService);
+                    break;
+                case "manageProducts":
+                    form = new ManageSouvenirs(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "manageVehicles":
+                    form = new ManageExhibits(ServiceLocator.GetService<IExhibitService>());
+                    break;
+                case "Home":
+                    form = new Index(userService);
+                    break;
+            }
+
+            Program.SwitchMainForm(form);
+        }
+
+        private void roundPictureBox1_Click(object sender, EventArgs e)
+        {
+            var userService = ServiceLocator.GetService<IUserService>();
+            var activeUser = userService.GetLoggedInUserAsync();
+            if (activeUser != null)
+            {
+                Profile profileForm = new Profile(userService, activeUser.Id);
+                Program.SwitchMainForm(profileForm);
+            }
         }
     }
 }

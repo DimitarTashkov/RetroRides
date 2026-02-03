@@ -32,15 +32,17 @@
             flowPanel = new FlowLayoutPanel();
             btnBack = new Button();
             label1 = new Label();
+            roundPictureBox1 = new RetroRides.Utilities.RoundPictureBox();
             menu = new MenuStrip();
             Home = new ToolStripMenuItem();
+            Vehicles = new ToolStripMenuItem();
             Store = new ToolStripMenuItem();
-            Services = new ToolStripMenuItem();
+            MyReservations = new ToolStripMenuItem();
             Users = new ToolStripMenuItem();
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
-            manageServices = new ToolStripMenuItem();
-            MyReservations = new ToolStripMenuItem();
+            manageVehicles = new ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             menu.SuspendLayout();
             SuspendLayout();
             // 
@@ -76,18 +78,30 @@
             label1.TabIndex = 26;
             label1.Text = "Vehicle Collection";
             // 
+            // roundPictureBox1
+            // 
+            roundPictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            roundPictureBox1.ImeMode = ImeMode.NoControl;
+            roundPictureBox1.Location = new Point(857, 0);
+            roundPictureBox1.Name = "roundPictureBox1";
+            roundPictureBox1.Size = new Size(57, 47);
+            roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            roundPictureBox1.TabIndex = 52;
+            roundPictureBox1.TabStop = false;
+            roundPictureBox1.Click += roundPictureBox1_Click;
+            // 
             // menu
             // 
             menu.BackColor = SystemColors.ScrollBar;
             menu.BackgroundImageLayout = ImageLayout.Stretch;
             menu.Font = new Font("Verdana", 12F, FontStyle.Bold);
             menu.ImageScalingSize = new Size(20, 20);
-            menu.Items.AddRange(new ToolStripItem[] { Home, Store, Services, Users, Management, MyReservations });
+            menu.Items.AddRange(new ToolStripItem[] { Home, Vehicles, Store, MyReservations, Users, Management });
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
             menu.Padding = new Padding(7, 1, 0, 7);
             menu.Size = new Size(914, 42);
-            menu.TabIndex = 32;
+            menu.TabIndex = 51;
             menu.Text = "Menu";
             // 
             // Home
@@ -95,6 +109,16 @@
             Home.Name = "Home";
             Home.Size = new Size(91, 34);
             Home.Text = "Home";
+            Home.Click += menu_ItemClicked;
+            // 
+            // Vehicles
+            // 
+            Vehicles.ForeColor = SystemColors.ActiveCaptionText;
+            Vehicles.Name = "Vehicles";
+            Vehicles.Padding = new Padding(4, 0, 4, 5);
+            Vehicles.Size = new Size(117, 34);
+            Vehicles.Text = "Vehicles";
+            Vehicles.Click += menu_ItemClicked;
             // 
             // Store
             // 
@@ -103,14 +127,17 @@
             Store.Padding = new Padding(4, 0, 4, 5);
             Store.Size = new Size(84, 34);
             Store.Text = "Store";
+            Store.Click += menu_ItemClicked;
             // 
-            // Services
+            // MyReservations
             // 
-            Services.ForeColor = SystemColors.ActiveCaptionText;
-            Services.Name = "Services";
-            Services.Padding = new Padding(4, 0, 4, 5);
-            Services.Size = new Size(118, 34);
-            Services.Text = "Services";
+            MyReservations.Font = new Font("Verdana", 12F, FontStyle.Bold);
+            MyReservations.ForeColor = SystemColors.ActiveCaptionText;
+            MyReservations.Name = "MyReservations";
+            MyReservations.Padding = new Padding(4, 0, 4, 5);
+            MyReservations.Size = new Size(136, 34);
+            MyReservations.Text = "My orders";
+            MyReservations.Click += menu_ItemClicked;
             // 
             // Users
             // 
@@ -121,10 +148,11 @@
             Users.Size = new Size(87, 34);
             Users.Text = "Users";
             Users.Visible = false;
+            Users.Click += menu_ItemClicked;
             // 
             // Management
             // 
-            Management.DropDownItems.AddRange(new ToolStripItem[] { manageProducts, manageServices });
+            Management.DropDownItems.AddRange(new ToolStripItem[] { manageProducts, manageVehicles });
             Management.Font = new Font("Verdana", 12F, FontStyle.Bold);
             Management.Name = "Management";
             Management.Size = new Size(169, 34);
@@ -134,23 +162,16 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(198, 30);
+            manageProducts.Size = new Size(224, 30);
             manageProducts.Text = "Products";
+            manageProducts.Click += menu_ItemClicked;
             // 
-            // manageServices
+            // manageVehicles
             // 
-            manageServices.Name = "manageServices";
-            manageServices.Size = new Size(198, 30);
-            manageServices.Text = "Services";
-            // 
-            // MyReservations
-            // 
-            MyReservations.Font = new Font("Verdana", 12F, FontStyle.Bold);
-            MyReservations.ForeColor = SystemColors.ActiveCaptionText;
-            MyReservations.Name = "MyReservations";
-            MyReservations.Padding = new Padding(4, 0, 4, 5);
-            MyReservations.Size = new Size(136, 34);
-            MyReservations.Text = "My orders";
+            manageVehicles.Name = "manageVehicles";
+            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Text = "Vehicles";
+            manageVehicles.Click += menu_ItemClicked;
             // 
             // Catalog
             // 
@@ -159,6 +180,7 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(914, 600);
+            Controls.Add(roundPictureBox1);
             Controls.Add(menu);
             Controls.Add(label1);
             Controls.Add(btnBack);
@@ -167,6 +189,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Catalog";
             Text = "Catalog";
+            ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             menu.ResumeLayout(false);
             menu.PerformLayout();
             ResumeLayout(false);
@@ -178,14 +201,15 @@
         private FlowLayoutPanel flowPanel;
         private Button btnBack;
         private Label label1;
+        private Utilities.RoundPictureBox roundPictureBox1;
         private MenuStrip menu;
         private ToolStripMenuItem Home;
+        private ToolStripMenuItem Vehicles;
         private ToolStripMenuItem Store;
-        private ToolStripMenuItem Services;
+        private ToolStripMenuItem MyReservations;
         private ToolStripMenuItem Users;
         private ToolStripMenuItem Management;
         private ToolStripMenuItem manageProducts;
-        private ToolStripMenuItem manageServices;
-        private ToolStripMenuItem MyReservations;
+        private ToolStripMenuItem manageVehicles;
     }
 }

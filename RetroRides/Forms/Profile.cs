@@ -277,5 +277,42 @@ namespace RetroRides.Forms
             Profile profileForm = new Profile(userService, activeUser.Id);
             Program.SwitchMainForm(profileForm);
         }
+
+        private void menu_ItemClicked(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item == null) return;
+
+            string formName = item.Name;
+            var userService = ServiceLocator.GetService<IUserService>();
+            Form form = new Index(userService);
+
+            switch (formName)
+            {
+                case "Store":
+                    form = new Shop(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "Vehicles":
+                    form = new Catalog();
+                    break;
+                case "MyReservations":
+                    form = new Orders(ServiceLocator.GetService<IReservationService>(), ServiceLocator.GetService<ISouvenirService>(), userService);
+                    break;
+                case "Users":
+                    form = new Users(userService);
+                    break;
+                case "manageProducts":
+                    form = new ManageSouvenirs(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "manageVehicles":
+                    form = new ManageExhibits(ServiceLocator.GetService<IExhibitService>());
+                    break;
+                case "Home":
+                    form = new Index(userService);
+                    break;
+            }
+
+            Program.SwitchMainForm(form);
+        }
     }
 }

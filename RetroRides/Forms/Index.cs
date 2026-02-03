@@ -50,8 +50,9 @@ namespace RetroRides.Forms
             // Скриване/Показване на админ бутоните в менюто
             // Увери се, че в Designer-а тези ToolStripMenuItems се казват така:
 
-             Users.Visible = isAdmin;
-             Management.Visible = isAdmin;
+            Users.Visible = isAdmin;
+            Management.Visible = isAdmin;
+            ApplyCustomStyles();
         }
 
         // --- БЪРЗИ БУТОНИ ОТ ЕКРАНА ---
@@ -66,17 +67,10 @@ namespace RetroRides.Forms
         private void store_button_Click(object sender, EventArgs e)
         {
             // Отиваме към Магазина
-            ShopForm shopForm = new ShopForm(shopService);
+            Shop shopForm = new Shop(shopService);
             Program.SwitchMainForm(shopForm);
         }
 
-        private void servicesButton_Click(object sender, EventArgs e)
-        {
-            // В Prisma "Services" беше резервация, тук може да е Каталога или Резервацията
-            // Нека води към Каталога с колите
-            CatalogForm catalogForm = new CatalogForm(exhibitService);
-            Program.SwitchMainForm(catalogForm);
-        }
 
         // --- ГЛАВНО МЕНЮ (MenuStrip Logic) ---
         private void menu_ItemClicked(object sender, EventArgs e)
@@ -91,13 +85,10 @@ namespace RetroRides.Forms
             {
                 // Клиентски форми
                 case "Store":
-                    form = new ShopForm(shopService);
+                    form = new Shop(shopService);
                     break;
-                case "Catalog": // Беше Services
-                    form = new CatalogForm(exhibitService);
-                    break;
-                case "Profile":
-                    form = new Profile(userService);
+                case "Vehicles": // Беше Services
+                    form = new Catalog();
                     break;
                 case "MyReservations": // Поръчки/Резервации
                     // Тук трябва да направиш Orders формата да приема нужните сървиси
@@ -111,10 +102,9 @@ namespace RetroRides.Forms
                 case "manageProducts": // Сувенири
                     form = new ManageSouvenirs(shopService);
                     break;
-                case "manageExhibits": // Коли (беше manageServices)
+                case "manageVehicles": // Коли (беше manageServices)
                     form = new ManageExhibits(exhibitService);
                     break;
-
                 // Начало
                 case "Home":
                     form = new Index(userService);
@@ -170,6 +160,12 @@ namespace RetroRides.Forms
         {
             ContactUs contactUsForm = new ContactUs();
             Program.SwitchMainForm(contactUsForm);
+        }
+
+        private void exhibitionsButton_Click(object sender, EventArgs e)
+        {
+            Catalog catalog = new Catalog();
+            Program.SwitchMainForm(catalog);
         }
     }
 }

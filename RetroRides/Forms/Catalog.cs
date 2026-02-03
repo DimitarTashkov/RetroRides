@@ -19,14 +19,22 @@ namespace RetroRides.Forms
         private readonly IExhibitService _service;
         private readonly IUserService _userService;
         private readonly IReservationService _reservationService;
+        private User activeUser;
+
         public Catalog()
         {
             InitializeComponent();
             _userService = ServiceLocator.GetService<IUserService>();
             _reservationService = ServiceLocator.GetService<IReservationService>();
+            _service = ServiceLocator.GetService<IExhibitService>();
+            activeUser = _userService.GetLoggedInUserAsync();
         }
         private void CatalogForm_Load(object sender, EventArgs e)
         {
+            bool isAdmin = AuthorizationHelper.IsAuthorized();
+            Users.Visible = isAdmin;
+            Management.Visible = isAdmin;
+
             LoadCatalog();
             this.Load += CatalogForm_Load;
         }
@@ -121,6 +129,51 @@ namespace RetroRides.Forms
         private void btnBack_Click(object sender, EventArgs e)
         {
             Program.SwitchMainForm(new Index(_userService));
+        }
+
+        private void menu_ItemClicked(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item == null) return;
+
+            string formName = item.Name;
+            Form form = new Index(_userService);
+
+            switch (formName)
+            {
+                case "Store":
+                    form = new Shop(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "Vehicles":
+                    form = new Catalog();
+                    break;
+                case "MyReservations":
+                    form = new Orders(ServiceLocator.GetService<IReservationService>(), ServiceLocator.GetService<ISouvenirService>(), _userService);
+                    break;
+                case "Users":
+                    form = new Users(_userService);
+                    break;
+                case "manageProducts":
+                    form = new ManageSouvenirs(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "manageVehicles":
+                    form = new ManageExhibits(ServiceLocator.GetService<IExhibitService>());
+                    break;
+                case "Home":
+                    form = new Index(_userService);
+                    break;
+            }
+
+            Program.SwitchMainForm(form);
+        }
+
+        private void roundPictureBox1_Click(object sender, EventArgs e)
+        {
+            if (activeUser != null)
+            {
+                Profile profileForm = new Profile(_userService, activeUser.Id);
+                Program.SwitchMainForm(profileForm);
+            }
         }
     }
 }

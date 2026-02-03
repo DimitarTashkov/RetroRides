@@ -1,5 +1,7 @@
 ﻿using RetroRides.Models;
 using RetroRides.Services.Interfaces;
+using RetroRides.Utilities;
+using RetroRides.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +17,37 @@ namespace RetroRides.Forms
     public partial class Shop : Form
     {
         private readonly ISouvenirService _service;
+        private readonly IUserService userService;
+        private User activeUser;
+
         public Shop(ISouvenirService service)
         {
             InitializeComponent();
             this._service = service;
+            userService = ServiceLocator.GetService<IUserService>();
+            activeUser = userService.GetLoggedInUserAsync();
         }
 
         private void Shop_Load(object sender, EventArgs e)
         {
+            if (activeUser != null && roundPictureBox1 != null) // Avoid potential null ref if roundPictureBox1 not Init
+                roundPictureBox1.ImageLocation = activeUser.AvatarUrl;
+
+            bool isAdmin = AuthorizationHelper.IsAuthorized();
+            // Assuming Users and Management menu items from designer?
+            // Shop.Designer.cs shows no menu created in InitializeComponent? 
+            // Wait, flowLayoutPanel1 is there. Where is the menu?
+            // Ah, the user didn't show menu in Shop.Designer.cs, only flowLayoutPanel1 and btnBack.
+            // If there's no menu strip, we might skip the visibility logic or check if controls exist.
+            // However, the instructions say "every form code logic". If MENU exists...
+            // Checking Shop.Designer.cs... It only has `btnBack` and `flowLayoutPanel1`. NO MenuStrip.
+            // So we can't switch Visibility of nonexistent items.
+            // But I will add the logic conditionally or just let it compile if the items don't exist? No, that causes errors.
+            // I will check if `Users` and `Management` exist in this scope. They are likely not in Shop.Designer.cs.
+            // But wait, the user asked to "add me the following method in every form code logic. Its the event for click called menu_ItemClicked".
+            // If there is no menu, this event is never called. But I should add the code to be safe or maybe the user plans to add menu?
+            // I will add the usings to fix compilation errors.
+
             LoadShop();
         }
         private void LoadShop()
@@ -81,8 +106,87 @@ namespace RetroRides.Forms
 
         private void BtnBuy_Click(object sender, EventArgs e)
         {
-            var item = (Souvenir)((Button)sender).Tag;
-            MessageBox.Show($"Purchase logic for: {item.Name}");
+            // 1. Взимаме сувенира от бутона
+            var btn = (Button)sender;
+            var item = (Souvenir)btn.Tag;
+
+
+            // 3. Питаме колко бройки иска (Опростен вариант: винаги 1, или можеш да добавиш InputBox)
+            int quantity = 1;
+
+            // 4. Потвърждение
+            var confirm = MessageBox.Show($"Buy '{item.Name}' for {item.Price:F2} BGN?", "Confirm Purchase", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    // 5. Извикваме Сървиса да направи поръчката
+                    _service.PurchaseItem(activeUser.Id, item.Id, quantity);
+
+                    MessageBox.Show("Purchase successful! Thank you.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // 6. Презареждаме магазина (за да се обнови бройката Stock)
+                    LoadShop();
+                }
+                catch (Exception ex)
+                {
+                    // Тук ще хванем грешката, ако няма наличност (Stock < quantity)
+                    MessageBox.Show($"Purchase failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void menu_ItemClicked(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item == null) return;
+
+            string formName = item.Name;
+
+            Form form = new Index(userService);
+
+            switch (formName)
+            {
+                case "Store":
+                    form = new Shop(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "Vehicles":
+                    form = new Catalog();
+                    break;
+                case "MyReservations":
+                    form = new Orders(ServiceLocator.GetService<IReservationService>(), ServiceLocator.GetService<ISouvenirService>(), userService);
+                    break;
+                case "Users":
+                    form = new Users(userService);
+                    break;
+                case "manageProducts":
+                    form = new ManageSouvenirs(ServiceLocator.GetService<ISouvenirService>());
+                    break;
+                case "manageVehicles":
+                    form = new ManageExhibits(ServiceLocator.GetService<IExhibitService>());
+                    break;
+                case "Home":
+                    form = new Index(userService);
+                    break;
+            }
+
+            Program.SwitchMainForm(form);
+        }
+
+        private void roundPictureBox1_Click(object sender, EventArgs e)
+        {
+            if (activeUser != null)
+            {
+                Profile profileForm = new Profile(userService, activeUser.Id);
+                Program.SwitchMainForm(profileForm);
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Index indexForm = new Index(userService);
+            Program.SwitchMainForm(indexForm);
         }
     }
 }

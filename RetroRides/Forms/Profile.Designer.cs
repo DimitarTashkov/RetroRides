@@ -54,13 +54,13 @@
             roundPictureBox1 = new RetroRides.Utilities.RoundPictureBox();
             menu = new MenuStrip();
             Home = new ToolStripMenuItem();
+            Vehicles = new ToolStripMenuItem();
             Store = new ToolStripMenuItem();
-            Services = new ToolStripMenuItem();
+            MyReservations = new ToolStripMenuItem();
             Users = new ToolStripMenuItem();
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
-            manageServices = new ToolStripMenuItem();
-            MyReservations = new ToolStripMenuItem();
+            manageVehicles = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)profilePicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             formPanel.SuspendLayout();
@@ -119,6 +119,7 @@
             resources.ApplyResources(uploadButton, "uploadButton");
             uploadButton.Name = "uploadButton";
             uploadButton.UseVisualStyleBackColor = true;
+            uploadButton.Click += uploadImage_click;
             // 
             // ageField
             // 
@@ -254,13 +255,22 @@
             menu.BackColor = SystemColors.ScrollBar;
             resources.ApplyResources(menu, "menu");
             menu.ImageScalingSize = new Size(20, 20);
-            menu.Items.AddRange(new ToolStripItem[] { Home, Store, Services, Users, Management, MyReservations });
+            menu.Items.AddRange(new ToolStripItem[] { Home, Vehicles, Store, MyReservations, Users, Management });
             menu.Name = "menu";
             // 
             // Home
             // 
             Home.Name = "Home";
             resources.ApplyResources(Home, "Home");
+            Home.Click += menu_ItemClicked;
+            // 
+            // Vehicles
+            // 
+            Vehicles.ForeColor = SystemColors.ActiveCaptionText;
+            Vehicles.Name = "Vehicles";
+            Vehicles.Padding = new Padding(4, 0, 4, 5);
+            resources.ApplyResources(Vehicles, "Vehicles");
+            Vehicles.Click += menu_ItemClicked;
             // 
             // Store
             // 
@@ -268,36 +278,7 @@
             Store.Name = "Store";
             Store.Padding = new Padding(4, 0, 4, 5);
             resources.ApplyResources(Store, "Store");
-            // 
-            // Services
-            // 
-            Services.ForeColor = SystemColors.ActiveCaptionText;
-            Services.Name = "Services";
-            Services.Padding = new Padding(4, 0, 4, 5);
-            resources.ApplyResources(Services, "Services");
-            // 
-            // Users
-            // 
-            resources.ApplyResources(Users, "Users");
-            Users.ForeColor = SystemColors.MenuText;
-            Users.Name = "Users";
-            Users.Padding = new Padding(4, 0, 4, 5);
-            // 
-            // Management
-            // 
-            Management.DropDownItems.AddRange(new ToolStripItem[] { manageProducts, manageServices });
-            resources.ApplyResources(Management, "Management");
-            Management.Name = "Management";
-            // 
-            // manageProducts
-            // 
-            manageProducts.Name = "manageProducts";
-            resources.ApplyResources(manageProducts, "manageProducts");
-            // 
-            // manageServices
-            // 
-            manageServices.Name = "manageServices";
-            resources.ApplyResources(manageServices, "manageServices");
+            Store.Click += menu_ItemClicked;
             // 
             // MyReservations
             // 
@@ -305,6 +286,33 @@
             MyReservations.ForeColor = SystemColors.ActiveCaptionText;
             MyReservations.Name = "MyReservations";
             MyReservations.Padding = new Padding(4, 0, 4, 5);
+            MyReservations.Click += menu_ItemClicked;
+            // 
+            // Users
+            // 
+            resources.ApplyResources(Users, "Users");
+            Users.ForeColor = SystemColors.MenuText;
+            Users.Name = "Users";
+            Users.Padding = new Padding(4, 0, 4, 5);
+            Users.Click += menu_ItemClicked;
+            // 
+            // Management
+            // 
+            Management.DropDownItems.AddRange(new ToolStripItem[] { manageProducts, manageVehicles });
+            resources.ApplyResources(Management, "Management");
+            Management.Name = "Management";
+            // 
+            // manageProducts
+            // 
+            manageProducts.Name = "manageProducts";
+            resources.ApplyResources(manageProducts, "manageProducts");
+            manageProducts.Click += menu_ItemClicked;
+            // 
+            // manageVehicles
+            // 
+            manageVehicles.Name = "manageVehicles";
+            resources.ApplyResources(manageVehicles, "manageVehicles");
+            manageVehicles.Click += menu_ItemClicked;
             // 
             // Profile
             // 
@@ -354,12 +362,12 @@
         private Utilities.RoundPictureBox roundPictureBox1;
         private MenuStrip menu;
         private ToolStripMenuItem Home;
+        private ToolStripMenuItem Vehicles;
         private ToolStripMenuItem Store;
-        private ToolStripMenuItem Services;
+        private ToolStripMenuItem MyReservations;
         private ToolStripMenuItem Users;
         private ToolStripMenuItem Management;
         private ToolStripMenuItem manageProducts;
-        private ToolStripMenuItem manageServices;
-        private ToolStripMenuItem MyReservations;
+        private ToolStripMenuItem manageVehicles;
     }
 }

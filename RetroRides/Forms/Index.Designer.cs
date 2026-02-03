@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             footer = new Button();
             storeButton = new Button();
-            servicesButton = new Button();
+            exhibitionsButton = new Button();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
             menu = new MenuStrip();
             Home = new ToolStripMenuItem();
+            Vehicles = new ToolStripMenuItem();
             Store = new ToolStripMenuItem();
-            Services = new ToolStripMenuItem();
             Users = new ToolStripMenuItem();
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
-            manageServices = new ToolStripMenuItem();
+            manageVehicles = new ToolStripMenuItem();
             MyReservations = new ToolStripMenuItem();
             aboutUs = new Label();
             contactUs = new Label();
@@ -66,13 +66,15 @@
             resources.ApplyResources(storeButton, "storeButton");
             storeButton.Name = "storeButton";
             storeButton.UseVisualStyleBackColor = false;
+            storeButton.Click += store_button_Click;
             // 
-            // servicesButton
+            // exhibitionsButton
             // 
-            servicesButton.BackColor = SystemColors.ButtonFace;
-            resources.ApplyResources(servicesButton, "servicesButton");
-            servicesButton.Name = "servicesButton";
-            servicesButton.UseVisualStyleBackColor = false;
+            exhibitionsButton.BackColor = SystemColors.ButtonFace;
+            resources.ApplyResources(exhibitionsButton, "exhibitionsButton");
+            exhibitionsButton.Name = "exhibitionsButton";
+            exhibitionsButton.UseVisualStyleBackColor = false;
+            exhibitionsButton.Click += exhibitionsButton_Click;
             // 
             // pictureBox2
             // 
@@ -91,13 +93,22 @@
             menu.BackColor = SystemColors.ScrollBar;
             resources.ApplyResources(menu, "menu");
             menu.ImageScalingSize = new Size(20, 20);
-            menu.Items.AddRange(new ToolStripItem[] { Home, Store, Services, Users, Management, MyReservations });
+            menu.Items.AddRange(new ToolStripItem[] { Home, Vehicles, Store, MyReservations, Users, Management });
             menu.Name = "menu";
             // 
             // Home
             // 
             Home.Name = "Home";
             resources.ApplyResources(Home, "Home");
+            Home.Click += menu_ItemClicked;
+            // 
+            // Vehicles
+            // 
+            Vehicles.ForeColor = SystemColors.ActiveCaptionText;
+            Vehicles.Name = "Vehicles";
+            Vehicles.Padding = new Padding(4, 0, 4, 5);
+            resources.ApplyResources(Vehicles, "Vehicles");
+            Vehicles.Click += menu_ItemClicked;
             // 
             // Store
             // 
@@ -105,13 +116,7 @@
             Store.Name = "Store";
             Store.Padding = new Padding(4, 0, 4, 5);
             resources.ApplyResources(Store, "Store");
-            // 
-            // Services
-            // 
-            Services.ForeColor = SystemColors.ActiveCaptionText;
-            Services.Name = "Services";
-            Services.Padding = new Padding(4, 0, 4, 5);
-            resources.ApplyResources(Services, "Services");
+            Store.Click += menu_ItemClicked;
             // 
             // Users
             // 
@@ -119,10 +124,11 @@
             Users.ForeColor = SystemColors.MenuText;
             Users.Name = "Users";
             Users.Padding = new Padding(4, 0, 4, 5);
+            Users.Click += menu_ItemClicked;
             // 
             // Management
             // 
-            Management.DropDownItems.AddRange(new ToolStripItem[] { manageProducts, manageServices });
+            Management.DropDownItems.AddRange(new ToolStripItem[] { manageProducts, manageVehicles });
             resources.ApplyResources(Management, "Management");
             Management.Name = "Management";
             // 
@@ -130,11 +136,13 @@
             // 
             manageProducts.Name = "manageProducts";
             resources.ApplyResources(manageProducts, "manageProducts");
+            manageProducts.Click += menu_ItemClicked;
             // 
-            // manageServices
+            // manageVehicles
             // 
-            manageServices.Name = "manageServices";
-            resources.ApplyResources(manageServices, "manageServices");
+            manageVehicles.Name = "manageVehicles";
+            resources.ApplyResources(manageVehicles, "manageVehicles");
+            manageVehicles.Click += menu_ItemClicked;
             // 
             // MyReservations
             // 
@@ -142,6 +150,7 @@
             MyReservations.ForeColor = SystemColors.ActiveCaptionText;
             MyReservations.Name = "MyReservations";
             MyReservations.Padding = new Padding(4, 0, 4, 5);
+            MyReservations.Click += menu_ItemClicked;
             // 
             // aboutUs
             // 
@@ -184,7 +193,7 @@
             Controls.Add(aboutUs);
             Controls.Add(footer);
             Controls.Add(storeButton);
-            Controls.Add(servicesButton);
+            Controls.Add(exhibitionsButton);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(menu);
@@ -204,12 +213,12 @@
 
         private Button footer;
         private Button storeButton;
-        private Button servicesButton;
+        private Button exhibitionsButton;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
         private MenuStrip menu;
         private ToolStripMenuItem Store;
-        private ToolStripMenuItem Services;
+        private ToolStripMenuItem Vehicles;
         private ToolStripMenuItem Users;
         private ToolStripMenuItem MyReservations;
         private ToolStripMenuItem Management;
@@ -218,7 +227,7 @@
         private Label contactUs;
         private Label welcomeMessage;
         private ToolStripMenuItem manageProducts;
-        private ToolStripMenuItem manageServices;
+        private ToolStripMenuItem manageVehicles;
         private Utilities.RoundPictureBox roundPictureBox1;
     }
 }

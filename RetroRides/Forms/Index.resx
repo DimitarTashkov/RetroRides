@@ -140,7 +140,7 @@
     <value>18</value>
   </data>
   <data name="footer.Text" xml:space="preserve">
-    <value>Ⓒ Prizma 2026</value>
+    <value>Ⓒ RetroRides 2026</value>
   </data>
   <data name="&gt;&gt;footer.Name" xml:space="preserve">
     <value>footer</value>
@@ -187,37 +187,37 @@
   <data name="&gt;&gt;storeButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="servicesButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+  <data name="exhibitionsButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
-  <data name="servicesButton.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="exhibitionsButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 12pt, style=Bold, Italic</value>
   </data>
-  <data name="servicesButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="exhibitionsButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 436</value>
   </data>
-  <data name="servicesButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="exhibitionsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="servicesButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 67</value>
+  <data name="exhibitionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 67</value>
   </data>
-  <data name="servicesButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="exhibitionsButton.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="servicesButton.Text" xml:space="preserve">
-    <value>Check out our latest services </value>
+  <data name="exhibitionsButton.Text" xml:space="preserve">
+    <value>Check out our latest vehicles </value>
   </data>
-  <data name="&gt;&gt;servicesButton.Name" xml:space="preserve">
-    <value>servicesButton</value>
+  <data name="&gt;&gt;exhibitionsButton.Name" xml:space="preserve">
+    <value>exhibitionsButton</value>
   </data>
-  <data name="&gt;&gt;servicesButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;exhibitionsButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;servicesButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;exhibitionsButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;servicesButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;exhibitionsButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
@@ -289,17 +289,26 @@
   <data name="Home.Text" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Vehicles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 34</value>
+  </data>
+  <data name="Vehicles.Text" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
   <data name="Store.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 34</value>
   </data>
   <data name="Store.Text" xml:space="preserve">
     <value>Store</value>
   </data>
-  <data name="Services.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 34</value>
+  <data name="MyReservations.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 12pt, style=Bold</value>
   </data>
-  <data name="Services.Text" xml:space="preserve">
-    <value>Services</value>
+  <data name="MyReservations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 34</value>
+  </data>
+  <data name="MyReservations.Text" xml:space="preserve">
+    <value>My orders</value>
   </data>
   <data name="Users.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 12pt, style=Bold</value>
@@ -314,16 +323,16 @@
     <value>False</value>
   </data>
   <data name="manageProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 30</value>
+    <value>224, 30</value>
   </data>
   <data name="manageProducts.Text" xml:space="preserve">
     <value>Products</value>
   </data>
-  <data name="manageServices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 30</value>
+  <data name="manageVehicles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 30</value>
   </data>
-  <data name="manageServices.Text" xml:space="preserve">
-    <value>Services</value>
+  <data name="manageVehicles.Text" xml:space="preserve">
+    <value>Vehicles</value>
   </data>
   <data name="Management.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 12pt, style=Bold</value>
@@ -336,15 +345,6 @@
   </data>
   <data name="Management.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="MyReservations.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Verdana, 12pt, style=Bold</value>
-  </data>
-  <data name="MyReservations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 34</value>
-  </data>
-  <data name="MyReservations.Text" xml:space="preserve">
-    <value>My orders</value>
   </data>
   <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -440,7 +440,7 @@
     <value>Segoe UI, 15.75pt, style=Bold</value>
   </data>
   <data name="welcomeMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 70</value>
+    <value>59, 71</value>
   </data>
   <data name="welcomeMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>856, 41</value>
@@ -449,7 +449,7 @@
     <value>23</value>
   </data>
   <data name="welcomeMessage.Text" xml:space="preserve">
-    <value>Welcome to Prizma Studio — see your moments in a new light.</value>
+    <value>Welcome to RetroRides — where legends of the road live on.</value>
   </data>
   <data name="&gt;&gt;welcomeMessage.Name" xml:space="preserve">
     <value>welcomeMessage</value>
@@ -593,16 +593,16 @@
   <data name="&gt;&gt;Home.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Vehicles.Name" xml:space="preserve">
+    <value>Vehicles</value>
+  </data>
+  <data name="&gt;&gt;Vehicles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Store.Name" xml:space="preserve">
     <value>Store</value>
   </data>
   <data name="&gt;&gt;Store.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Services.Name" xml:space="preserve">
-    <value>Services</value>
-  </data>
-  <data name="&gt;&gt;Services.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Users.Name" xml:space="preserve">
@@ -623,10 +623,10 @@
   <data name="&gt;&gt;manageProducts.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;manageServices.Name" xml:space="preserve">
-    <value>manageServices</value>
+  <data name="&gt;&gt;manageVehicles.Name" xml:space="preserve">
+    <value>manageVehicles</value>
   </data>
-  <data name="&gt;&gt;manageServices.Type" xml:space="preserve">
+  <data name="&gt;&gt;manageVehicles.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MyReservations.Name" xml:space="preserve">
