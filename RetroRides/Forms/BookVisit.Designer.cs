@@ -235,14 +235,14 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(224, 30);
+            manageProducts.Size = new Size(198, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Size = new Size(198, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
             // 
@@ -267,6 +267,7 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookVisit";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "BookVisit";
             Load += BookVisit_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

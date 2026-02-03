@@ -30,25 +30,24 @@ namespace RetroRides.Services
             return _context.Souvenirs.Find(id);
         }
 
-        public void PurchaseItem(Guid userId, Guid souvenirId, int quantity)
+        public void PurchaseItem(Guid userId, Guid souvenirId, int quantity, string address, string phone)
         {
             var souvenir = _context.Souvenirs.Find(souvenirId);
 
             if (souvenir != null && souvenir.StockQuantity >= quantity)
             {
-                // 1. Намаляваме наличността
                 souvenir.StockQuantity -= quantity;
 
-                // 2. Създаваме Поръчка (Order)
                 var order = new Order
                 {
                     Id = Guid.NewGuid(),
                     UserId = userId,
                     OrderDate = DateTime.Now,
-                    TotalAmount = souvenir.Price * quantity
+                    TotalAmount = souvenir.Price * quantity,
+                    DeliveryAddress = address, // Запазваме адреса
+                    PhoneNumber = phone        // Запазваме телефона
                 };
 
-                // 3. Добавяме редовете (Items)
                 var orderItem = new OrderItem
                 {
                     Id = Guid.NewGuid(),
@@ -60,12 +59,11 @@ namespace RetroRides.Services
 
                 _context.Orders.Add(order);
                 _context.OrderItems.Add(orderItem);
-
                 _context.SaveChanges();
             }
             else
             {
-                throw new Exception("Not enough stock available!");
+                throw new Exception("Not enough stock available.");
             }
         }
         public void AddSouvenir(Souvenir souvenir)
@@ -99,10 +97,10 @@ namespace RetroRides.Services
         }
         public List<Order> GetOrdersByUserId(Guid userId)
         {
-            // Взимаме поръчките на потребителя + детайлите какво е купил
             return _context.Orders
+                           .Include(o => o.User)        // Трябва ни за името във фактурата
                            .Include(o => o.OrderItems)
-                           .ThenInclude(oi => oi.Souvenir)
+                           .ThenInclude(oi => oi.Souvenir) // Трябва ни за името на продукта
                            .Where(o => o.UserId == userId)
                            .OrderByDescending(o => o.OrderDate)
                            .ToList();
@@ -111,11 +109,23 @@ namespace RetroRides.Services
         public List<Order> GetAllOrders()
         {
             return _context.Orders
-                           .Include(o => o.User) // За да видим кой е купил
+                           .Include(o => o.User)
                            .Include(o => o.OrderItems)
                            .ThenInclude(oi => oi.Souvenir)
                            .OrderByDescending(o => o.OrderDate)
                            .ToList();
         }
+        public void DeleteOrder(Guid id)
+        {
+            var order = _context.Orders.Include(o => o.OrderItems).FirstOrDefault(o => o.Id == id);
+            if (order != null)
+            {
+                // Първо трием редовете (Items), ако Cascade delete не е настроен
+                _context.OrderItems.RemoveRange(order.OrderItems);
+                _context.Orders.Remove(order);
+                _context.SaveChanges();
+            }
+        }
+
     }
 }

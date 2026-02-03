@@ -30,15 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditSouvenir));
             label6 = new Label();
-            label2 = new Label();
-            numYear = new NumericUpDown();
             txtPrice = new TextBox();
             btnBack = new Button();
             btnSave = new Button();
             pictureBox1 = new PictureBox();
             pbImage = new Button();
-            txtDescription = new TextBox();
-            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             txtName = new TextBox();
@@ -55,7 +51,6 @@
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
             manageVehicles = new ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)numYear).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             menu.SuspendLayout();
@@ -73,28 +68,6 @@
             label6.TabIndex = 61;
             label6.Text = "Add or edit exhibit";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(308, 272);
-            label2.Name = "label2";
-            label2.Size = new Size(56, 28);
-            label2.TabIndex = 60;
-            label2.Text = "Year:";
-            // 
-            // numYear
-            // 
-            numYear.Location = new Point(268, 300);
-            numYear.Maximum = new decimal(new int[] { 2026, 0, 0, 0 });
-            numYear.Minimum = new decimal(new int[] { 1900, 0, 0, 0 });
-            numYear.Name = "numYear";
-            numYear.Size = new Size(150, 27);
-            numYear.TabIndex = 59;
-            numYear.Value = new decimal(new int[] { 1900, 0, 0, 0 });
-            // 
             // txtPrice
             // 
             txtPrice.Location = new Point(266, 180);
@@ -107,7 +80,7 @@
             btnBack.BackColor = Color.Orange;
             btnBack.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnBack.ForeColor = SystemColors.ControlText;
-            btnBack.Location = new Point(485, 502);
+            btnBack.Location = new Point(499, 405);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(100, 40);
             btnBack.TabIndex = 56;
@@ -119,7 +92,7 @@
             // 
             btnSave.BackColor = Color.Lime;
             btnSave.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnSave.Location = new Point(354, 502);
+            btnSave.Location = new Point(357, 405);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(100, 40);
             btnSave.TabIndex = 55;
@@ -129,10 +102,12 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Location = new Point(723, 78);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(200, 198);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 54;
             pictureBox1.TabStop = false;
             // 
@@ -149,26 +124,6 @@
             pbImage.Text = "Upload image";
             pbImage.UseVisualStyleBackColor = false;
             pbImage.Click += PbImage_Click;
-            // 
-            // txtDescription
-            // 
-            txtDescription.Location = new Point(268, 373);
-            txtDescription.Multiline = true;
-            txtDescription.Name = "txtDescription";
-            txtDescription.Size = new Size(405, 91);
-            txtDescription.TabIndex = 52;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(295, 330);
-            label5.Name = "label5";
-            label5.Size = new Size(120, 28);
-            label5.TabIndex = 51;
-            label5.Text = "Description:";
             // 
             // label4
             // 
@@ -242,7 +197,7 @@
             roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             roundPictureBox1.TabIndex = 65;
             roundPictureBox1.TabStop = false;
-            roundPictureBox1.Click += menu_ItemClicked;
+            roundPictureBox1.Click += roundPictureBox1_Click;
             // 
             // menu
             // 
@@ -316,14 +271,14 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(224, 30);
+            manageProducts.Size = new Size(198, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Size = new Size(198, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
             // 
@@ -339,15 +294,11 @@
             Controls.Add(txtStock);
             Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(label2);
-            Controls.Add(numYear);
             Controls.Add(txtPrice);
             Controls.Add(btnBack);
             Controls.Add(btnSave);
             Controls.Add(pictureBox1);
             Controls.Add(pbImage);
-            Controls.Add(txtDescription);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(txtName);
@@ -355,8 +306,8 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddEditSouvenir";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddEditSouvenir";
-            ((System.ComponentModel.ISupportInitialize)numYear).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             menu.ResumeLayout(false);
@@ -368,15 +319,11 @@
         #endregion
 
         private Label label6;
-        private Label label2;
-        private NumericUpDown numYear;
         private TextBox txtPrice;
         private Button btnBack;
         private Button btnSave;
         private PictureBox pictureBox1;
         private Button pbImage;
-        private TextBox txtDescription;
-        private Label label5;
         private Label label4;
         private Label label3;
         private TextBox txtName;

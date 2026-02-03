@@ -35,7 +35,8 @@ namespace RetroRides.Forms
         {
             SetupUI();
             pictureBox1.ImageLocation = _selectedExhibit.ImagePath;
-            
+            roundPictureBox1.ImageLocation = currrentUser?.AvatarUrl;
+
             bool isAdmin = AuthorizationHelper.IsAuthorized();
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
@@ -80,8 +81,16 @@ namespace RetroRides.Forms
             {
                 _reservationService.CreateReservation(currrentUser.Id, date, notes);
 
-                MessageBox.Show("Reservation confirmed! You can see it in 'My Reservations'.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var tempRes = new Reservation
+                {
+                    Id = Guid.NewGuid(), // Или взимаме истинското ID ако сървиса го връща
+                    DateOfVisit = date,
+                    User = currrentUser,
+                    Notes = notes
+                };
 
+                string ticket = InvoiceHelper.GenerateReservationTicket(tempRes);
+                MessageBox.Show("Booking Confirmed!\n\n" + ticket, "Your Ticket", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Връщаме към каталога или към моите резервации
                 Program.SwitchMainForm(new Catalog());
             }

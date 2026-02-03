@@ -29,19 +29,19 @@ namespace RetroRides.Forms
         private void LoadPortfolioContent()
         {
             // 1. Заглавие
-            lblTitle.Text = "PHOTO STUDIO PRIZMA";
+            lblTitle.Text = "Vehicle museum RetroRides";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
 
             // 2. Основно описание (Portfolio Bio)
-            lblDescription.Text =
-                "Welcome to Photo Studio Prizma – where moments become timeless memories.\n\n" +
-                "Founded in 2026, we are a team of passionate photographers and videographers dedicated to visual storytelling. " +
-                "We believe that every picture tells a story, and our mission is to capture yours with authenticity and style.\n\n" +
-                "OUR SPECIALTIES:\n" +
-                "• Professional Headshots & Portraits\n" +
-                "• Wedding & Event Photography\n" +
-                "• Commercial & Product Photography\n" +
-                "• Fine Art Prints";
+            string text = "Welcome to RetroRides!\n\n" +
+              "We are a museum dedicated to the golden era of automobiles. " +
+              "Our mission is to preserve history on wheels.\n\n" +
+              "Here you can explore legendary models like the Ford Mustang, " +
+              "learn their history, and book your visit.\n\n" +
+              "Thank you for being part of our journey!";
+
+            if (lblDescription != null)
+                lblDescription.Text = text;
 
             // Направи го да изглежда добре
             // (Увери се, че в Дизайнера Label-ът е достатъчно голям или AutoSize = true)
@@ -49,7 +49,7 @@ namespace RetroRides.Forms
             // 3. Статистика (Доверие)
             if (lblStats != null)
             {
-                lblStats.Text = "⭐ 5+ Years Experience   |   📸 1200+ Photo Sessions   |   ❤️ 500+ Happy Clients";
+                lblStats.Text = "⭐ 3+ Years Experience   |   🚗 100+ Vehicles   |   ❤️ 200+ Happy Clients";
                 lblStats.ForeColor = Color.DarkSlateGray;
                 lblStats.TextAlign = ContentAlignment.MiddleCenter;
             }

@@ -17,10 +17,13 @@ namespace RetroRides.Forms
     public partial class ManageSouvenirs : Form
     {
         private readonly ISouvenirService _service;
+        private readonly IUserService _userService = ServiceLocator.GetService<IUserService>();
+        private User? activeUser;
         public ManageSouvenirs(ISouvenirService service)
         {
             InitializeComponent();
             _service = service;
+            activeUser = _userService.GetLoggedInUserAsync();
         }
         private void ManageSouvenirs_Load(object sender, EventArgs e)
         {
@@ -31,6 +34,7 @@ namespace RetroRides.Forms
             bool isAdmin = AuthorizationHelper.IsAuthorized();
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
+            roundPictureBox1.ImageLocation = activeUser?.AvatarUrl;
         }
 
         private void SetupGrid()

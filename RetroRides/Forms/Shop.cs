@@ -34,6 +34,9 @@ namespace RetroRides.Forms
                 roundPictureBox1.ImageLocation = activeUser.AvatarUrl;
 
             bool isAdmin = AuthorizationHelper.IsAuthorized();
+
+            Users.Visible = isAdmin;
+            Management.Visible = isAdmin;
             // Assuming Users and Management menu items from designer?
             // Shop.Designer.cs shows no menu created in InitializeComponent? 
             // Wait, flowLayoutPanel1 is there. Where is the menu?
@@ -79,10 +82,28 @@ namespace RetroRides.Forms
 
                 Label lblPrice = new Label
                 {
-                    Text = $"{item.Price:F2} BGN",
+                    Text = $"{item.Price:F2} EUR",
                     Location = new Point(10, 40),
+                    AutoSize = true,
                     ForeColor = Color.Green,
                     Font = new Font("Arial", 12, FontStyle.Bold)
+                };
+
+                Label lblQuantity = new Label
+                {
+                    Text = $"Available: {item.StockQuantity}",
+                    Location = new Point(120, 45),
+                    AutoSize = true,
+                    ForeColor = Color.DimGray,
+                    Font = new Font("Arial", 9, FontStyle.Regular)
+                };
+
+                PictureBox pbImage = new PictureBox
+                {
+                    ImageLocation = item.ImagePath,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(10, 70),
+                    Size = new Size(178, 120)
                 };
 
                 Button btnBuy = new Button
@@ -98,6 +119,8 @@ namespace RetroRides.Forms
 
                 card.Controls.Add(lblName);
                 card.Controls.Add(lblPrice);
+                card.Controls.Add(lblQuantity);
+                card.Controls.Add(pbImage);
                 card.Controls.Add(btnBuy);
 
                 flowLayoutPanel1.Controls.Add(card);
@@ -106,33 +129,15 @@ namespace RetroRides.Forms
 
         private void BtnBuy_Click(object sender, EventArgs e)
         {
-            // 1. Взимаме сувенира от бутона
             var btn = (Button)sender;
             var item = (Souvenir)btn.Tag;
 
-
-            // 3. Питаме колко бройки иска (Опростен вариант: винаги 1, или можеш да добавиш InputBox)
-            int quantity = 1;
-
-            // 4. Потвърждение
-            var confirm = MessageBox.Show($"Buy '{item.Name}' for {item.Price:F2} BGN?", "Confirm Purchase", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirm == DialogResult.Yes)
+            // ОТВАРЯМЕ CHECKOUT ФОРМАТА
+            using (var checkout = new Checkout(_service, item, activeUser))
             {
-                try
+                if (checkout.ShowDialog() == DialogResult.OK)
                 {
-                    // 5. Извикваме Сървиса да направи поръчката
-                    _service.PurchaseItem(activeUser.Id, item.Id, quantity);
-
-                    MessageBox.Show("Purchase successful! Thank you.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 6. Презареждаме магазина (за да се обнови бройката Stock)
-                    LoadShop();
-                }
-                catch (Exception ex)
-                {
-                    // Тук ще хванем грешката, ако няма наличност (Stock < quantity)
-                    MessageBox.Show($"Purchase failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    LoadShop(); // Презареждаме магазина след успешна покупка
                 }
             }
         }

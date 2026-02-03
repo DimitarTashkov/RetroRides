@@ -193,6 +193,7 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ManageExhibits";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ManageExhibits";
             Load += ManageExhibits_Load;
             ((System.ComponentModel.ISupportInitialize)dgvExhibits).EndInit();

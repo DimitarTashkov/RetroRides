@@ -38,11 +38,11 @@
             Home = new ToolStripMenuItem();
             Vehicles = new ToolStripMenuItem();
             Store = new ToolStripMenuItem();
+            MyReservations = new ToolStripMenuItem();
             Users = new ToolStripMenuItem();
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
             manageVehicles = new ToolStripMenuItem();
-            MyReservations = new ToolStripMenuItem();
             aboutUs = new Label();
             contactUs = new Label();
             welcomeMessage = new Label();
@@ -118,6 +118,14 @@
             resources.ApplyResources(Store, "Store");
             Store.Click += menu_ItemClicked;
             // 
+            // MyReservations
+            // 
+            resources.ApplyResources(MyReservations, "MyReservations");
+            MyReservations.ForeColor = SystemColors.ActiveCaptionText;
+            MyReservations.Name = "MyReservations";
+            MyReservations.Padding = new Padding(4, 0, 4, 5);
+            MyReservations.Click += menu_ItemClicked;
+            // 
             // Users
             // 
             resources.ApplyResources(Users, "Users");
@@ -143,14 +151,6 @@
             manageVehicles.Name = "manageVehicles";
             resources.ApplyResources(manageVehicles, "manageVehicles");
             manageVehicles.Click += menu_ItemClicked;
-            // 
-            // MyReservations
-            // 
-            resources.ApplyResources(MyReservations, "MyReservations");
-            MyReservations.ForeColor = SystemColors.ActiveCaptionText;
-            MyReservations.Name = "MyReservations";
-            MyReservations.Padding = new Padding(4, 0, 4, 5);
-            MyReservations.Click += menu_ItemClicked;
             // 
             // aboutUs
             // 

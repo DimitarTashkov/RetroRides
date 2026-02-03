@@ -44,6 +44,8 @@
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
             manageVehicles = new ToolStripMenuItem();
+            btnBack = new Button();
+            label1 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReservations).BeginInit();
@@ -189,16 +191,41 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(224, 30);
+            manageProducts.Size = new Size(198, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Size = new Size(198, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.DarkOrange;
+            btnBack.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBack.ForeColor = SystemColors.ControlText;
+            btnBack.Location = new Point(12, 45);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(77, 30);
+            btnBack.TabIndex = 61;
+            btnBack.Text = "<-Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(418, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(104, 38);
+            label1.TabIndex = 62;
+            label1.Text = "Orders";
             // 
             // Orders
             // 
@@ -207,12 +234,15 @@
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(982, 613);
+            Controls.Add(label1);
+            Controls.Add(btnBack);
             Controls.Add(roundPictureBox1);
             Controls.Add(menu);
             Controls.Add(tabControl1);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Orders";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Orders";
             Load += Orders_Load;
             tabControl1.ResumeLayout(false);
@@ -244,5 +274,7 @@
         private ToolStripMenuItem Management;
         private ToolStripMenuItem manageProducts;
         private ToolStripMenuItem manageVehicles;
+        private Button btnBack;
+        private Label label1;
     }
 }

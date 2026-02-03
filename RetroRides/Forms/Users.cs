@@ -25,6 +25,11 @@ namespace RetroRides.Forms
 
         private async void Users_Load(object sender, EventArgs e)
         {
+            bool isAdmin = AuthorizationHelper.IsAuthorized();
+
+            User.Visible = isAdmin;
+            Management.Visible = isAdmin;
+
             roundPictureBox1.ImageLocation = activeUser.AvatarUrl;
 
             var users = await userService.GetUsersAsync();

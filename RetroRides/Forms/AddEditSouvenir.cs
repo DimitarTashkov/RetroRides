@@ -20,23 +20,24 @@ namespace RetroRides.Forms
         private readonly ISouvenirService _service;
         private Souvenir _souvenir;
         private string _selectedImagePath = null;
+        private User? activeUser;
+        private readonly IUserService _userService = ServiceLocator.GetService<IUserService>();
         public AddEditSouvenir(ISouvenirService service, Souvenir souvenir)
         {
             InitializeComponent();
-            InitializeComponent();
             _service = service;
             _souvenir = souvenir; // Ако е null, ще го инициализираме долу
+            activeUser = _userService.GetLoggedInUserAsync();
 
             SetupUI();
-            
+
             bool isAdmin = AuthorizationHelper.IsAuthorized();
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
+            roundPictureBox1.ImageLocation = activeUser?.AvatarUrl;
         }
         private void SetupUI()
         {
-            this.StartPosition = FormStartPosition.CenterScreen;
-
 
             if (_souvenir != null)
             {
@@ -49,7 +50,7 @@ namespace RetroRides.Forms
                 {
                     try
                     {
-                        pbImage.Image = Image.FromFile(_souvenir.ImagePath);
+                        pictureBox1.Image = Image.FromFile(_souvenir.ImagePath);
                         _selectedImagePath = _souvenir.ImagePath;
                     }
                     catch { pbImage.BackColor = Color.Gray; }
@@ -71,7 +72,7 @@ namespace RetroRides.Forms
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    pbImage.Image = Image.FromFile(ofd.FileName);
+                    pictureBox1.Image = Image.FromFile(ofd.FileName);
                     _selectedImagePath = ofd.FileName;
                 }
             }
@@ -192,5 +193,9 @@ namespace RetroRides.Forms
             }
         }
 
+        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

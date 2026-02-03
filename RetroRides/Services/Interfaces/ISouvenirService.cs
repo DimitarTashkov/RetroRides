@@ -12,11 +12,14 @@ namespace RetroRides.Services.Interfaces
     {
         List<Souvenir> GetAllSouvenirs();
         Souvenir GetSouvenirById(Guid id);
-        void PurchaseItem(Guid userId, Guid souvenirId, int quantity);
+        void PurchaseItem(Guid userId, Guid souvenirId, int quantity, string address, string phone);
         void AddSouvenir(Souvenir souvenir);
         void UpdateSouvenir(Souvenir souvenir);
         void DeleteSouvenir(Guid id);
         List<Order> GetOrdersByUserId(Guid userId); // За клиента
         List<Order> GetAllOrders(); // За админа
+        void DeleteOrder(Guid id);
+
+
     }
 }

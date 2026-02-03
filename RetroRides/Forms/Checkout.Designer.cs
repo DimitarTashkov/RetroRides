@@ -1,6 +1,6 @@
 ﻿namespace RetroRides.Forms
 {
-    partial class Shop
+    partial class Checkout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            btnBack = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Checkout));
+            label1 = new Label();
             roundPictureBox1 = new RetroRides.Utilities.RoundPictureBox();
             menu = new MenuStrip();
             Home = new ToolStripMenuItem();
@@ -41,41 +40,37 @@
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
             manageVehicles = new ToolStripMenuItem();
-            label1 = new Label();
+            adress = new Label();
+            txtAddress = new TextBox();
+            txtPhone = new TextBox();
+            lblPhone = new Label();
+            itemsBox = new ListBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             menu.SuspendLayout();
             SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // label1
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Location = new Point(51, 93);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(800, 448);
-            flowLayoutPanel1.TabIndex = 0;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.DarkOrange;
-            btnBack.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnBack.ForeColor = SystemColors.ControlText;
-            btnBack.Location = new Point(12, 48);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(85, 39);
-            btnBack.TabIndex = 26;
-            btnBack.Text = "<-Back";
-            btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += btnBack_Click;
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(411, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(140, 38);
+            label1.TabIndex = 0;
+            label1.Text = "Checkout";
             // 
             // roundPictureBox1
             // 
             roundPictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             roundPictureBox1.ImeMode = ImeMode.NoControl;
-            roundPictureBox1.Location = new Point(857, 0);
+            roundPictureBox1.Location = new Point(925, 0);
             roundPictureBox1.Name = "roundPictureBox1";
             roundPictureBox1.Size = new Size(57, 47);
             roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            roundPictureBox1.TabIndex = 64;
+            roundPictureBox1.TabIndex = 35;
             roundPictureBox1.TabStop = false;
             roundPictureBox1.Click += roundPictureBox1_Click;
             // 
@@ -89,8 +84,8 @@
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
             menu.Padding = new Padding(7, 1, 0, 7);
-            menu.Size = new Size(914, 42);
-            menu.TabIndex = 63;
+            menu.Size = new Size(982, 42);
+            menu.TabIndex = 34;
             menu.Text = "Menu";
             // 
             // Home
@@ -151,47 +146,96 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(198, 30);
+            manageProducts.Size = new Size(224, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(198, 30);
+            manageVehicles.Size = new Size(224, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
             // 
-            // label1
+            // adress
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(397, 49);
-            label1.Name = "label1";
-            label1.Size = new Size(86, 38);
-            label1.TabIndex = 65;
-            label1.Text = "Store";
+            adress.AutoSize = true;
+            adress.BackColor = Color.Transparent;
+            adress.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            adress.ForeColor = Color.White;
+            adress.Location = new Point(432, 106);
+            adress.Name = "adress";
+            adress.Size = new Size(90, 28);
+            adress.TabIndex = 36;
+            adress.Text = "Address:";
             // 
-            // Shop
+            // txtAddress
+            // 
+            txtAddress.Location = new Point(400, 146);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(140, 27);
+            txtAddress.TabIndex = 37;
+            // 
+            // txtPhone
+            // 
+            txtPhone.Location = new Point(400, 207);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(140, 27);
+            txtPhone.TabIndex = 39;
+            // 
+            // lblPhone
+            // 
+            lblPhone.AutoSize = true;
+            lblPhone.BackColor = Color.Transparent;
+            lblPhone.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPhone.ForeColor = Color.White;
+            lblPhone.Location = new Point(432, 176);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(76, 28);
+            lblPhone.TabIndex = 38;
+            lblPhone.Text = "Phone:";
+            // 
+            // itemsBox
+            // 
+            itemsBox.FormattingEnabled = true;
+            itemsBox.Location = new Point(639, 132);
+            itemsBox.Name = "itemsBox";
+            itemsBox.Size = new Size(194, 204);
+            itemsBox.TabIndex = 40;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Lime;
+            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(411, 354);
+            button1.Name = "button1";
+            button1.Size = new Size(129, 40);
+            button1.TabIndex = 41;
+            button1.Text = "Confirm";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += btnConfirm_Click;
+            // 
+            // Checkout
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(914, 600);
-            Controls.Add(label1);
+            ClientSize = new Size(982, 553);
+            Controls.Add(button1);
+            Controls.Add(itemsBox);
+            Controls.Add(txtPhone);
+            Controls.Add(lblPhone);
+            Controls.Add(txtAddress);
+            Controls.Add(adress);
             Controls.Add(roundPictureBox1);
             Controls.Add(menu);
-            Controls.Add(btnBack);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(label1);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Shop";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Shop";
-            Load += Shop_Load;
+            Name = "Checkout";
+            Text = "Checkout";
+            Load += Checkout_Load;
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             menu.ResumeLayout(false);
             menu.PerformLayout();
@@ -201,8 +245,7 @@
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Button btnBack;
+        private Label label1;
         private Utilities.RoundPictureBox roundPictureBox1;
         private MenuStrip menu;
         private ToolStripMenuItem Home;
@@ -213,6 +256,11 @@
         private ToolStripMenuItem Management;
         private ToolStripMenuItem manageProducts;
         private ToolStripMenuItem manageVehicles;
-        private Label label1;
+        private Label adress;
+        private TextBox txtAddress;
+        private TextBox txtPhone;
+        private Label lblPhone;
+        private ListBox itemsBox;
+        private Button button1;
     }
 }

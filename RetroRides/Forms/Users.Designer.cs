@@ -184,13 +184,13 @@
             // 
             manageProducts.Name = "manageProducts";
             resources.ApplyResources(manageProducts, "manageProducts");
-            manageProducts.Click += roundPictureBox1_Click;
+            manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
             resources.ApplyResources(manageVehicles, "manageVehicles");
-            manageVehicles.Click += roundPictureBox1_Click;
+            manageVehicles.Click += menu_ItemClicked;
             // 
             // Users
             // 

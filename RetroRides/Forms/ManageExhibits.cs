@@ -18,11 +18,13 @@ namespace RetroRides.Forms
     {
         private readonly IExhibitService _service;
         private readonly IUserService _userService;
+        private User? activeUser;
         public ManageExhibits(IExhibitService service)
         {
             InitializeComponent();
             this._service = service;
             this._userService = ServiceLocator.GetService<IUserService>();
+            activeUser = _userService.GetLoggedInUserAsync();
         }
 
         private void ManageExhibits_Load(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace RetroRides.Forms
             bool isAdmin = AuthorizationHelper.IsAuthorized();
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
+            roundPictureBox1.ImageLocation = activeUser?.AvatarUrl;
         }
         private void SetupGrid()
         {

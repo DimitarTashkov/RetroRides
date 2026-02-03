@@ -87,10 +87,12 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             pictureBox1.Location = new Point(689, 88);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(200, 198);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 37;
             pictureBox1.TabStop = false;
             // 
@@ -305,14 +307,14 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(224, 30);
+            manageProducts.Size = new Size(198, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Size = new Size(198, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
             // 
@@ -343,6 +345,7 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddEditExhibit";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AddEditExhibit";
             Load += AddEditExhibit_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

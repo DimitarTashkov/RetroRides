@@ -30,51 +30,171 @@ namespace RetroRides.Forms
         }
         private void SetupGrids()
         {
-            // Настройки за таблицата с Резервации
+            // === 1. Таблица РЕЗЕРВАЦИИ ===
             dgvReservations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvReservations.ReadOnly = true;
             dgvReservations.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Настройки за таблицата с Поръчки
+            // Добавяме бутон за триене, ако го няма
+            if (!dgvReservations.Columns.Contains("Cancel"))
+            {
+                var btnCancel = new DataGridViewButtonColumn
+                {
+                    Name = "Cancel",
+                    HeaderText = "Actions",
+                    Text = "Cancel Reservation",
+                    UseColumnTextForButtonValue = true
+                };
+                dgvReservations.Columns.Add(btnCancel);
+            }
+
+            // Закачаме събитието за клик
+            dgvReservations.CellContentClick -= DgvReservations_CellContentClick;
+            dgvReservations.CellContentClick += DgvReservations_CellContentClick;
+
+
+            // === 2. Таблица ПОРЪЧКИ ===
             dgvOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvOrders.ReadOnly = true;
             dgvOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Добавяме бутон за триене на поръчка (само за админ или ако позволиш на user)
+            if (!dgvOrders.Columns.Contains("Delete"))
+            {
+                var btnDelete = new DataGridViewButtonColumn
+                {
+                    Name = "Delete",
+                    HeaderText = "Actions",
+                    Text = "Delete Order",
+                    UseColumnTextForButtonValue = true
+                };
+                dgvOrders.Columns.Add(btnDelete);
+            }
+            if (!dgvOrders.Columns.Contains("Invoice"))
+            {
+                var btnInvoice = new DataGridViewButtonColumn
+                {
+                    Name = "Invoice",
+                    HeaderText = "Document",
+                    Text = "View Invoice",
+                    UseColumnTextForButtonValue = true
+                };
+                dgvOrders.Columns.Add(btnInvoice);
+            }
+
+            // Закачаме събитието за клик
+            dgvOrders.CellContentClick -= DgvOrders_CellContentClick;
+            dgvOrders.CellContentClick += DgvOrders_CellContentClick;
         }
 
         private void LoadData()
         {
+            if (activeUser == null) return;
 
             bool isAdmin = AuthorizationHelper.IsAuthorized();
 
-            // 1. ЗАРЕЖДАНЕ НА РЕЗЕРВАЦИИ
+            // --- ЗАРЕЖДАНЕ НА РЕЗЕРВАЦИИ ---
             var reservations = isAdmin
-                ? _reservationService.GetAllReservations() // Админът вижда всичко
-                : _reservationService.GetReservationsByUser(activeUser.Id); // Клиентът - само своите
+                ? _reservationService.GetAllReservations()
+                : _reservationService.GetReservationsByUser(activeUser.Id);
 
-            // Мапваме към анонимен обект за по-чист вид в таблицата
+            // ВАЖНО: Включваме Id в селекцията, за да можем да трием после!
             dgvReservations.DataSource = reservations.Select(r => new
             {
+                Id = r.Id, // <--- ТОВА Е ВАЖНОТО
                 Date = r.DateOfVisit,
                 Notes = r.Notes,
-                User = isAdmin ? r.User.Username : "Me" // Показваме user само ако е админ
+                User = isAdmin ? r.User.Username : "Me"
             }).ToList();
 
+            // Скриваме колоната ID, за да е красиво
+            if (dgvReservations.Columns["Id"] != null) dgvReservations.Columns["Id"].Visible = false;
 
-            // 2. ЗАРЕЖДАНЕ НА ПОРЪЧКИ (СУВЕНИРИ)
+
+            // --- ЗАРЕЖДАНЕ НА ПОРЪЧКИ ---
             var orders = isAdmin
                 ? _souvenirService.GetAllOrders()
                 : _souvenirService.GetOrdersByUserId(activeUser.Id);
 
-            // Тук е малко по-сложно, защото една поръчка може да има много продукти.
-            // За простота ще покажем основното инфо.
             dgvOrders.DataSource = orders.Select(o => new
             {
+                Id = o.Id, // <--- ТОВА Е ВАЖНОТО
                 OrderDate = o.OrderDate,
                 Total = $"{o.TotalAmount:F2} BGN",
                 ItemsCount = o.OrderItems.Count,
                 Details = string.Join(", ", o.OrderItems.Select(i => $"{i.Souvenir?.Name} (x{i.Quantity})")),
                 User = isAdmin ? o.User.Username : "Me"
             }).ToList();
+
+            // Скриваме колоната ID
+            if (dgvOrders.Columns["Id"] != null) dgvOrders.Columns["Id"].Visible = false;
+        }
+
+        // === ЛОГИКА ЗА ТРИЕНЕ НА РЕЗЕРВАЦИИ ===
+        private void DgvReservations_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Проверка дали е натиснат бутона "Cancel" и дали реда е валиден
+            if (e.RowIndex >= 0 && dgvReservations.Columns[e.ColumnIndex].Name == "Cancel")
+            {
+                if (MessageBox.Show("Are you sure you want to cancel this reservation?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // Взимаме ID-то от скритата колона
+                        Guid id = (Guid)dgvReservations.Rows[e.RowIndex].Cells["Id"].Value;
+
+                        // Трябва да имаш DeleteReservation в IReservationService!
+                        _reservationService.DeleteReservation(id);
+
+                        LoadData(); // Презареждаме таблицата
+                        MessageBox.Show("Reservation cancelled.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        // === ЛОГИКА ЗА ТРИЕНЕ НА ПОРЪЧКИ ===
+        private void DgvOrders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvOrders.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                if (MessageBox.Show("Are you sure you want to delete this order record?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Guid id = (Guid)dgvOrders.Rows[e.RowIndex].Cells["Id"].Value;
+
+                        // Трябва да имаш DeleteOrder в ISouvenirService!
+                        _souvenirService.DeleteOrder(id);
+
+                        LoadData();
+                        MessageBox.Show("Order deleted.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+            }
+            if (e.RowIndex >= 0 && dgvOrders.Columns[e.ColumnIndex].Name == "Invoice")
+            {
+                // Взимаме ID-то
+                Guid orderId = (Guid)dgvOrders.Rows[e.RowIndex].Cells["Id"].Value;
+
+                // Намираме цялата поръчка от сървиса (или от локалния списък ако го пазиш)
+                // Тъй като dgvDataSource е анонимен обект, трябва да я намерим:
+                var order = _souvenirService.GetAllOrders().FirstOrDefault(o => o.Id == orderId); // Това е бавно, по-добре си пази списъка в променлива
+
+                if (order != null)
+                {
+                    string invoiceText = InvoiceHelper.GenerateOrderInvoice(order);
+                    MessageBox.Show(invoiceText, "Order Invoice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void Orders_Load(object sender, EventArgs e)
@@ -85,6 +205,7 @@ namespace RetroRides.Forms
             bool isAdmin = AuthorizationHelper.IsAuthorized();
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
+            roundPictureBox1.ImageLocation = activeUser?.AvatarUrl;
         }
 
         private void menu_ItemClicked(object sender, EventArgs e)
@@ -133,6 +254,12 @@ namespace RetroRides.Forms
                 Profile profileForm = new Profile(userService, activeUser.Id);
                 Program.SwitchMainForm(profileForm);
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Index homeForm = new Index(_userService);
+            Program.SwitchMainForm(homeForm);
         }
     }
 }

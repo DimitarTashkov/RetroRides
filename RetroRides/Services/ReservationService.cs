@@ -59,5 +59,14 @@ namespace RetroRides.Services
                 _context.SaveChanges();
             }
         }
+        public void DeleteReservation(Guid id)
+        {
+            var res = _context.Reservations.Find(id);
+            if (res != null)
+            {
+                _context.Reservations.Remove(res);
+                _context.SaveChanges();
+            }
+        }
     }
 }

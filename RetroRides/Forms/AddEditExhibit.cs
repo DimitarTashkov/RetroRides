@@ -38,6 +38,7 @@ namespace RetroRides.Forms
             
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
+            roundPictureBox1.ImageLocation = activeUser?.AvatarUrl;
         }
         private void SetupUI()
         {
@@ -74,7 +75,7 @@ namespace RetroRides.Forms
             {
                 try
                 {
-                    pbImage.Image = Image.FromFile(_exhibit.ImagePath);
+                    pictureBox1.Image = Image.FromFile(_exhibit.ImagePath);
                     _selectedImagePath = _exhibit.ImagePath;
                 }
                 catch { pbImage.BackColor = Color.Gray; }
@@ -92,7 +93,7 @@ namespace RetroRides.Forms
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     // Показваме веднага
-                    pbImage.Image = Image.FromFile(ofd.FileName);
+                    pictureBox1.Image = Image.FromFile(ofd.FileName);
                     // Пазим пътя за по-късно (при Save)
                     _selectedImagePath = ofd.FileName;
                 }

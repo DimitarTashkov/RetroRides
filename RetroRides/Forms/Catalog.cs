@@ -31,12 +31,12 @@ namespace RetroRides.Forms
         }
         private void CatalogForm_Load(object sender, EventArgs e)
         {
+            roundPictureBox1.ImageLocation = activeUser?.AvatarUrl;
             bool isAdmin = AuthorizationHelper.IsAuthorized();
             Users.Visible = isAdmin;
             Management.Visible = isAdmin;
 
             LoadCatalog();
-            this.Load += CatalogForm_Load;
         }
 
         private void LoadCatalog()
@@ -52,7 +52,7 @@ namespace RetroRides.Forms
                 // --- 1. КАРТА (Панел) ---
                 Panel card = new Panel
                 {
-                    Size = new Size(240, 320),
+                    Size = new Size(230, 320),
                     BorderStyle = BorderStyle.None,
                     BackColor = Color.White,
                     Margin = new Padding(15)
@@ -61,7 +61,7 @@ namespace RetroRides.Forms
                 // --- 2. СНИМКА (RoundPictureBox) ---
                 RoundPictureBox pb = new RoundPictureBox
                 {
-                    Size = new Size(220, 160),
+                    Size = new Size(210, 160),
                     Location = new Point(10, 10),
                     SizeMode = PictureBoxSizeMode.StretchImage,
                     BackColor = Color.LightGray
@@ -82,7 +82,7 @@ namespace RetroRides.Forms
                     Text = $"{item.Make} {item.Model}",
                     Location = new Point(10, 180),
                     AutoSize = true,
-                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     ForeColor = Color.DarkSlateBlue
                 };
                 card.Controls.Add(lblTitle);

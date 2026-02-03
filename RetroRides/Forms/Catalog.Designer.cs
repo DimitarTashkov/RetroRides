@@ -52,7 +52,7 @@
             flowPanel.BackColor = SystemColors.ScrollBar;
             flowPanel.Location = new Point(27, 105);
             flowPanel.Name = "flowPanel";
-            flowPanel.Size = new Size(859, 448);
+            flowPanel.Size = new Size(925, 448);
             flowPanel.TabIndex = 0;
             // 
             // btnBack
@@ -66,13 +66,15 @@
             btnBack.TabIndex = 25;
             btnBack.Text = "<-Back";
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(325, 51);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(376, 51);
             label1.Name = "label1";
             label1.Size = new Size(249, 38);
             label1.TabIndex = 26;
@@ -82,7 +84,7 @@
             // 
             roundPictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             roundPictureBox1.ImeMode = ImeMode.NoControl;
-            roundPictureBox1.Location = new Point(857, 0);
+            roundPictureBox1.Location = new Point(925, 0);
             roundPictureBox1.Name = "roundPictureBox1";
             roundPictureBox1.Size = new Size(57, 47);
             roundPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -100,7 +102,7 @@
             menu.Location = new Point(0, 0);
             menu.Name = "menu";
             menu.Padding = new Padding(7, 1, 0, 7);
-            menu.Size = new Size(914, 42);
+            menu.Size = new Size(982, 42);
             menu.TabIndex = 51;
             menu.Text = "Menu";
             // 
@@ -162,14 +164,14 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(224, 30);
+            manageProducts.Size = new Size(198, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Size = new Size(198, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
             // 
@@ -179,7 +181,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(982, 600);
             Controls.Add(roundPictureBox1);
             Controls.Add(menu);
             Controls.Add(label1);
@@ -188,7 +190,9 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Catalog";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Catalog";
+            Load += CatalogForm_Load;
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).EndInit();
             menu.ResumeLayout(false);
             menu.PerformLayout();

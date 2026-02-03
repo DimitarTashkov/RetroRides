@@ -54,7 +54,7 @@
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(202, 52);
             btnAdd.TabIndex = 3;
-            btnAdd.Text = "Add new vehicle";
+            btnAdd.Text = "Add new souvenir";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
@@ -167,14 +167,14 @@
             // manageProducts
             // 
             manageProducts.Name = "manageProducts";
-            manageProducts.Size = new Size(224, 30);
+            manageProducts.Size = new Size(198, 30);
             manageProducts.Text = "Products";
             manageProducts.Click += menu_ItemClicked;
             // 
             // manageVehicles
             // 
             manageVehicles.Name = "manageVehicles";
-            manageVehicles.Size = new Size(224, 30);
+            manageVehicles.Size = new Size(198, 30);
             manageVehicles.Text = "Vehicles";
             manageVehicles.Click += menu_ItemClicked;
             // 
@@ -193,6 +193,7 @@
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ManageSouvenirs";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ManageSouvenirs";
             Load += ManageSouvenirs_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSouvenirs).EndInit();

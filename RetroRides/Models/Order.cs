@@ -23,6 +23,11 @@ namespace RetroRides.Data.Models
         public DateTime OrderDate { get; set; } = DateTime.Now;
 
         public decimal TotalAmount { get; set; }
+        [Required]
+        public string DeliveryAddress { get; set; } = string.Empty;
+
+        [Required]
+        public string PhoneNumber { get; set; } = string.Empty;
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }

@@ -13,5 +13,6 @@ namespace RetroRides.Services.Interfaces
         List<Reservation> GetReservationsByUser(Guid userId);
         List<Reservation> GetAllReservations(); // За админа
         void UpdateStatus(Guid reservationId, string newStatus);
+        void DeleteReservation(Guid id);
     }
 }

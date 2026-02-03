@@ -323,13 +323,13 @@
     <value>False</value>
   </data>
   <data name="manageProducts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 30</value>
+    <value>198, 30</value>
   </data>
   <data name="manageProducts.Text" xml:space="preserve">
     <value>Products</value>
   </data>
   <data name="manageVehicles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 30</value>
+    <value>198, 30</value>
   </data>
   <data name="manageVehicles.Text" xml:space="preserve">
     <value>Vehicles</value>
@@ -440,7 +440,7 @@
     <value>Segoe UI, 15.75pt, style=Bold</value>
   </data>
   <data name="welcomeMessage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 71</value>
+    <value>28, 70</value>
   </data>
   <data name="welcomeMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>856, 41</value>
@@ -605,6 +605,12 @@
   <data name="&gt;&gt;Store.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;MyReservations.Name" xml:space="preserve">
+    <value>MyReservations</value>
+  </data>
+  <data name="&gt;&gt;MyReservations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;Users.Name" xml:space="preserve">
     <value>Users</value>
   </data>
@@ -627,12 +633,6 @@
     <value>manageVehicles</value>
   </data>
   <data name="&gt;&gt;manageVehicles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MyReservations.Name" xml:space="preserve">
-    <value>MyReservations</value>
-  </data>
-  <data name="&gt;&gt;MyReservations.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

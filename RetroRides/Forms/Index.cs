@@ -41,7 +41,7 @@ namespace RetroRides.Forms
         private void Index_Load(object sender, EventArgs e)
         {
             // Зареждане на аватар (ако имаш такова поле в User, иначе го коментирай)
-            // roundPictureBox1.ImageLocation = activeUser.AvatarUrl; 
+             roundPictureBox1.ImageLocation = activeUser.AvatarUrl; 
 
             // Проверка за админ права
             bool isAdmin = AuthorizationHelper.IsAuthorized(); // или .IsAuthorized(), зависи как е в RetroRides
