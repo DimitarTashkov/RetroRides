@@ -78,12 +78,14 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Image = Properties.Resources.images__1_;
             resources.ApplyResources(pictureBox2, "pictureBox2");
             pictureBox2.Name = "pictureBox2";
             pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
+            pictureBox1.Image = Properties.Resources.souvenirs;
             resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
