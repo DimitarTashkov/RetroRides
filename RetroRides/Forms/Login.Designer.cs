@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             formPanel = new Panel();
+            pictureBox1 = new PictureBox();
             label8 = new Label();
             label7 = new Label();
             label4 = new Label();
@@ -47,6 +48,7 @@
             logo = new PictureBox();
             label3 = new Label();
             formPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             SuspendLayout();
             // 
@@ -55,6 +57,7 @@
             formPanel.BackColor = Color.White;
             formPanel.BackgroundImage = Properties.Resources.gradient_img__4_;
             resources.ApplyResources(formPanel, "formPanel");
+            formPanel.Controls.Add(pictureBox1);
             formPanel.Controls.Add(label8);
             formPanel.Controls.Add(label7);
             formPanel.Controls.Add(label4);
@@ -72,6 +75,15 @@
             formPanel.Controls.Add(logo);
             formPanel.Name = "formPanel";
             formPanel.Paint += formPanel_Paint;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.responsive_image;
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = Properties.Resources.responsive_image;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
             // 
             // label8
             // 
@@ -209,6 +221,7 @@
             Load += Login_Load;
             formPanel.ResumeLayout(false);
             formPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)logo).EndInit();
             ResumeLayout(false);
         }
@@ -232,5 +245,6 @@
         private Label label4;
         private Label label8;
         private Label label7;
+        private PictureBox pictureBox1;
     }
 }

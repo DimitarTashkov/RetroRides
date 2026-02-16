@@ -121,11 +121,38 @@
   <data name="formPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="pictureBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>700, 480</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 50</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>formPanel</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="pfpErrorMessages.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pfpErrorMessages.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 8.25pt, style=Bold, Italic</value>
   </data>
@@ -154,7 +181,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;pfpErrorMessages.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="ageErrors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -187,7 +214,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;ageErrors.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="emailErrors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,7 +247,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;emailErrors.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="passwordErrors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -253,7 +280,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;passwordErrors.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="usernameErrors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,7 +313,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;usernameErrors.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="disclaimer.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,7 +343,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;disclaimer.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="navigationButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 11.25pt, style=Bold, Italic</value>
@@ -347,7 +374,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;navigationButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="profilePicture.Location" type="System.Drawing.Point, System.Drawing">
     <value>526, 69</value>
@@ -374,7 +401,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;profilePicture.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="registerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 11.25pt, style=Bold, Italic</value>
@@ -404,7 +431,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;registerButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="uploadButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11.25pt, style=Bold</value>
@@ -434,7 +461,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;uploadButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="ageField.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 9.75pt, style=Bold, Italic</value>
@@ -461,7 +488,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;ageField.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="ageLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -491,7 +518,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;ageLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="emailField.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 9.75pt, style=Bold, Italic</value>
@@ -518,7 +545,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;emailField.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="emailLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -548,7 +575,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;emailLabel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="passwordField.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 9.75pt, style=Bold, Italic</value>
@@ -575,7 +602,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;passwordField.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="passwordLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -605,7 +632,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;passwordLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="usernameField.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 9.75pt, style=Bold, Italic</value>
@@ -632,7 +659,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;usernameField.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="usernameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -662,7 +689,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;usernameLabel.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="logo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -689,7 +716,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;logo.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="register_label.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -719,7 +746,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;register_label.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="formPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>81, 33</value>

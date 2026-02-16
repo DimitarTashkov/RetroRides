@@ -50,9 +50,11 @@
             usernameLabel = new Label();
             logo = new PictureBox();
             register_label = new Label();
+            pictureBox1 = new PictureBox();
             formPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)profilePicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // formPanel
@@ -60,6 +62,7 @@
             formPanel.BackColor = SystemColors.Control;
             formPanel.BackgroundImage = Properties.Resources.gradient_img__4_;
             resources.ApplyResources(formPanel, "formPanel");
+            formPanel.Controls.Add(pictureBox1);
             formPanel.Controls.Add(pfpErrorMessages);
             formPanel.Controls.Add(ageErrors);
             formPanel.Controls.Add(emailErrors);
@@ -220,6 +223,15 @@
             register_label.BackColor = Color.Transparent;
             register_label.Name = "register_label";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.responsive_image;
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.Image = Properties.Resources.responsive_image;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
+            // 
             // Register
             // 
             resources.ApplyResources(this, "$this");
@@ -232,6 +244,7 @@
             formPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)profilePicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)logo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -258,5 +271,6 @@
         private Label emailErrors;
         private Label passwordErrors;
         private Label pfpErrorMessages;
+        private PictureBox pictureBox1;
     }
 }

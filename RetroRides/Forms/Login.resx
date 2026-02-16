@@ -121,7 +121,32 @@
   <data name="formPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
+  <data name="pictureBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>747, 414</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 50</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>formPanel</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12.75pt, style=Bold, Italic</value>
   </data>
@@ -131,7 +156,6 @@
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>446, 83</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
@@ -148,7 +172,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -181,7 +205,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 371</value>
@@ -202,7 +226,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -235,7 +259,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,7 +292,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -298,7 +322,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="passwordError.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -331,7 +355,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;passwordError.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="usernameError.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -364,7 +388,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;usernameError.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="register.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -394,7 +418,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;register.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="loginBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 14.25pt, style=Bold</value>
@@ -425,7 +449,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;loginBtn.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="passwordField.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 12pt</value>
@@ -452,7 +476,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;passwordField.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="passwordLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -482,7 +506,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;passwordLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="usernameField.Font" type="System.Drawing.Font, System.Drawing">
     <value>Verdana, 12pt</value>
@@ -509,7 +533,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;usernameField.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="usernameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -539,7 +563,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;usernameLabel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="logo.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
@@ -566,7 +590,7 @@
     <value>formPanel</value>
   </data>
   <data name="&gt;&gt;logo.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="formPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 72</value>
