@@ -13,7 +13,7 @@ namespace RetroRides.Forms
 
         private User activeUser;
         private readonly IUserService userService;
-        
+
         public ContactUs()
         {
             this.userService = ServiceLocator.GetService<IUserService>();
@@ -25,7 +25,7 @@ namespace RetroRides.Forms
         private void ContactUs_Load(object sender, EventArgs e)
         {
             if (activeUser != null && roundPictureBox1 != null) // Avoid potential null ref if roundPictureBox1 not Init
-                 roundPictureBox1.ImageLocation = activeUser.AvatarUrl;
+                roundPictureBox1.ImageLocation = activeUser.AvatarUrl;
 
             bool isAdmin = AuthorizationHelper.IsAuthorized();
 
@@ -33,7 +33,7 @@ namespace RetroRides.Forms
             Management.Visible = isAdmin;
         }
 
-        
+
         private void roundPictureBox1_Click(object sender, EventArgs e)
         {
             Profile profileForm = new Profile(userService, activeUser.Id);
@@ -46,7 +46,7 @@ namespace RetroRides.Forms
             if (item == null) return;
 
             string formName = item.Name;
-            
+
             Form form = new Index(userService);
 
             switch (formName)
@@ -75,6 +75,11 @@ namespace RetroRides.Forms
             }
 
             Program.SwitchMainForm(form);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thank you for reaching out to us! Your feedback is crucial for our prosperity!.", "Message Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

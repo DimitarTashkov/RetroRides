@@ -41,6 +41,14 @@
             Management = new ToolStripMenuItem();
             manageProducts = new ToolStripMenuItem();
             manageVehicles = new ToolStripMenuItem();
+            label1 = new Label();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            label4 = new Label();
+            comboBox1 = new ComboBox();
+            label5 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)roundPictureBox1).BeginInit();
             menu.SuspendLayout();
@@ -131,11 +139,72 @@
             resources.ApplyResources(manageVehicles, "manageVehicles");
             manageVehicles.Click += menu_ItemClicked;
             // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = Color.Transparent;
+            label1.Name = "label1";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.BackColor = Color.Transparent;
+            label3.ForeColor = Color.Transparent;
+            label3.Name = "label3";
+            // 
+            // textBox1
+            // 
+            resources.ApplyResources(textBox1, "textBox1");
+            textBox1.Name = "textBox1";
+            // 
+            // textBox2
+            // 
+            resources.ApplyResources(textBox2, "textBox2");
+            textBox2.Name = "textBox2";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.BackColor = Color.Transparent;
+            label4.ForeColor = Color.Transparent;
+            label4.Name = "label4";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { resources.GetString("comboBox1.Items"), resources.GetString("comboBox1.Items1"), resources.GetString("comboBox1.Items2"), resources.GetString("comboBox1.Items3"), resources.GetString("comboBox1.Items4") });
+            resources.ApplyResources(comboBox1, "comboBox1");
+            comboBox1.Name = "comboBox1";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.BackColor = Color.Transparent;
+            label5.ForeColor = Color.Transparent;
+            label5.Name = "label5";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.CornflowerBlue;
+            resources.ApplyResources(button1, "button1");
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // ContactUs
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.background;
+            Controls.Add(button1);
+            Controls.Add(label5);
+            Controls.Add(comboBox1);
+            Controls.Add(textBox2);
+            Controls.Add(label4);
+            Controls.Add(textBox1);
+            Controls.Add(label3);
+            Controls.Add(label1);
             Controls.Add(roundPictureBox1);
             Controls.Add(menu);
             Controls.Add(pictureBox1);
@@ -164,5 +233,13 @@
         private ToolStripMenuItem Management;
         private ToolStripMenuItem manageProducts;
         private ToolStripMenuItem manageVehicles;
+        private Label label1;
+        private Label label3;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Label label4;
+        private ComboBox comboBox1;
+        private Label label5;
+        private Button button1;
     }
 }
