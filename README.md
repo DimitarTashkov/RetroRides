@@ -102,6 +102,3 @@ An admin user is automatically seeded on first launch. Check `SeedAdmin.cs` for 
 
 ---
 
-## ?? License
-
-This project is developed for educational purposes.
