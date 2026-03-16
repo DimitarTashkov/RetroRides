@@ -1,10 +1,10 @@
-# ?? RetroRides � Retro Vehicle Museum Management System
+# RetroRides — Retro Vehicle Museum Management System
 
-A Windows Forms desktop application built with **.NET 8** and **Entity Framework Core** for managing a retro car & motorcycle museum. Visitors can browse the vehicle catalog, book museum visits, and purchase souvenirs � while administrators manage exhibits, products, users, and orders.
+A Windows Forms desktop application built with **.NET 8** and **Entity Framework Core** for managing a retro car & motorcycle museum. Visitors can browse the vehicle catalog, book museum visits, and purchase souvenirs — while administrators manage exhibits, products, users, and orders.
 
 ---
 
-## ?? Overview
+## Overview
 
 RetroRides provides a complete museum management experience with role-based access:
 
@@ -13,27 +13,27 @@ RetroRides provides a complete museum management experience with role-based acce
 
 ---
 
-## ? Features
+## Features
 
 ### Visitor Features
-- **Authentication** � Register and log in with username, password, email, age, and avatar
-- **Vehicle Catalog** � Browse retro cars and motorcycles with images, make, model, year, and type
-- **Book a Visit** � Reserve a date to visit the museum with optional notes
-- **Souvenir Shop** � Purchase museum souvenirs with stock tracking
-- **Checkout & Invoices** � Complete orders with delivery address and phone, and receive generated invoices
-- **My Orders** � View personal reservation and order history
-- **Profile Management** � Edit profile details, upload avatar, change password, or delete account
-- **Responsive Design** � Login and Register forms toggle between desktop and mobile layouts
+- **Authentication** — Register and log in with username, password, email, age, and avatar
+- **Vehicle Catalog** — Browse retro cars and motorcycles with images, make, model, year, and type
+- **Book a Visit** — Reserve a date to visit the museum with optional notes
+- **Souvenir Shop** — Purchase museum souvenirs with stock tracking
+- **Checkout & Invoices** — Complete orders with delivery address and phone, and receive generated invoices
+- **My Orders** — View personal reservation and order history
+- **Profile Management** — Edit profile details, upload avatar, change password, or delete account
+- **Responsive Design** — Login and Register forms toggle between desktop and mobile layouts
 
 ### Admin Features
-- **User Management** � View all users, assign/remove admin roles, edit or delete accounts
-- **Manage Exhibits** � Add, edit, and delete vehicles (cars/motorcycles) with image uploads
-- **Manage Souvenirs** � Add, edit, and delete shop products with pricing and stock
-- **View All Orders & Reservations** � Full visibility across all users
+- **User Management** — View all users, assign/remove admin roles, edit or delete accounts
+- **Manage Exhibits** — Add, edit, and delete vehicles (cars/motorcycles) with image uploads
+- **Manage Souvenirs** — Add, edit, and delete shop products with pricing and stock
+- **View All Orders & Reservations** — Full visibility across all users
 
 ---
 
-## ??? Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |---|---|
@@ -46,67 +46,7 @@ RetroRides provides a complete museum management experience with role-based acce
 
 ---
 
-## ?? Project Structure
-
-```
-RetroRides/
-??? Common/
-?   ??? Constants/          # Validation constants, font configuration
-?   ??? Messages/           # Error message strings
-??? DTOs/
-?   ??? User/               # LoginUserInputModel, RegisterUserInputModel, EditProfileInputModel
-??? Extensions/
-?   ??? ServiceLocator.cs   # Service locator for dependency resolution
-?   ??? ServiceRegistration.cs  # DI container setup
-??? Forms/
-?   ??? Login.cs            # Login form with responsive toggle
-?   ??? Register.cs         # Registration form with responsive toggle
-?   ??? Index.cs            # Main dashboard / home page
-?   ??? Catalog.cs          # Vehicle collection browser
-?   ??? BookVisit.cs        # Museum visit reservation
-?   ??? Shop.cs             # Souvenir store
-?   ??? Checkout.cs         # Order checkout
-?   ??? Orders.cs           # Reservations & orders history
-?   ??? Profile.cs          # User profile management
-?   ??? Users.cs            # Admin: user management
-?   ??? ManageExhibits.cs   # Admin: vehicle CRUD
-?   ??? ManageSouvenirs.cs  # Admin: souvenir CRUD
-?   ??? AddEditExhibit.cs   # Admin: add/edit vehicle form
-?   ??? AddEditSouvenir.cs  # Admin: add/edit souvenir form
-?   ??? AboutUs.cs          # About page
-?   ??? ContactUs.cs        # Contact form
-??? Models/
-?   ??? User.cs             # User entity
-?   ??? Role.cs             # Role entity
-?   ??? UserRole.cs         # Many-to-many join table
-?   ??? Exhibit.cs          # Vehicle exhibit entity
-?   ??? Souvenir.cs         # Souvenir product entity
-?   ??? Reservation.cs      # Museum visit reservation entity
-?   ??? Order.cs            # Purchase order entity
-?   ??? OrderItem.cs        # Order line item entity
-?   ??? DbConfiguration/   # MuseumContext, Configuration, SeedAdmin
-??? Services/
-?   ??? Interfaces/         # IUserService, IExhibitService, IReservationService, ISouvenirService
-?   ??? UserService.cs
-?   ??? ExhibitService.cs
-?   ??? ReservationService.cs
-?   ??? SouvenirService.cs
-??? Utilities/
-?   ??? AuthorizationHelper.cs
-?   ??? ValidationHelper.cs
-?   ??? InvoiceHelper.cs
-?   ??? RoundPictureBox.cs  # Custom circular PictureBox control
-?   ??? EventsEffects.cs
-?   ??? DynamicContentTranslator.cs
-??? Migrations/             # EF Core database migrations
-??? Properties/
-?   ??? Resources.resx      # Embedded images (logo, backgrounds, responsive icons)
-??? Program.cs              # Application entry point
-```
-
----
-
-## ??? Database Schema
+## Database Schema
 
 | Entity | Description |
 |---|---|
@@ -121,7 +61,7 @@ RetroRides/
 
 ---
 
-## ?? Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -202,6 +142,3 @@ An admin user is automatically seeded on first launch. Check `SeedAdmin.cs` for 
 
 ---
 
-## ?? License
-
-This project is developed for educational purposes.
